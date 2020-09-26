@@ -31,7 +31,7 @@ public class TelaLogin extends javax.swing.JFrame {
         TFLogin = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         PFLogin = new javax.swing.JPasswordField();
-        ButtonEntrar = new javax.swing.JButton();
+        jbEntrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,10 +48,10 @@ public class TelaLogin extends javax.swing.JFrame {
 
         PFLogin.setText("jPasswordField1");
 
-        ButtonEntrar.setText("Entrar");
-        ButtonEntrar.addActionListener(new java.awt.event.ActionListener() {
+        jbEntrar.setText("Entrar");
+        jbEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonEntrarActionPerformed(evt);
+                jbEntrarActionPerformed(evt);
             }
         });
 
@@ -62,7 +62,7 @@ public class TelaLogin extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(ButtonEntrar)
+                    .addComponent(jbEntrar)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel2)
                         .addComponent(jLabel1)
@@ -82,8 +82,8 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PFLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
-                .addComponent(ButtonEntrar)
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addComponent(jbEntrar)
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         pack();
@@ -93,9 +93,9 @@ public class TelaLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TFLoginActionPerformed
 
-    private void ButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEntrarActionPerformed
+    private void jbEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEntrarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonEntrarActionPerformed
+    }//GEN-LAST:event_jbEntrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -133,10 +133,10 @@ public class TelaLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ButtonEntrar;
     private javax.swing.JPasswordField PFLogin;
     private javax.swing.JTextField TFLogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton jbEntrar;
     // End of variables declaration//GEN-END:variables
 }
