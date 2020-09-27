@@ -1,3 +1,5 @@
+package model;
+
 
 
 /**
@@ -5,13 +7,13 @@
  * @version 1.0
  * @created 27-set-2020 10:21:44
  */
-public class Avaliacao��o {
+public class Avaliacao {
 
 	private String comentario;
 	private int id;
 	private double nota;
 
-	public Avaliacao��o(){
+	public Avaliacao(){
 
 	}
 

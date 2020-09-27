@@ -53,15 +53,7 @@ public class ControladorLogin {
            ProfessorDao professor = ProfessorDao.getInstance();
            encontrou = professor.existeProfessor(login[0], login[1]);
             if(!encontrou){
-            JOptionPane.showMessageDialog(telaLogin, "Login inválido");
-            Professor newProfessor = new Professor();
-            newProfessor.setProfessorId(456789);
-            newProfessor.setSenha("456789");
-            newProfessor.setDisciplina(new Disciplina());
-            newProfessor.setAgenda(new Agenda());
-            professor.put(newProfessor);
-            professor.persist();
-            
+                JOptionPane.showMessageDialog(telaLogin, "Login inválido");            
             }else {
                 ControladorPrincipal.getInstance().abreTelaInicial("professor");
             }

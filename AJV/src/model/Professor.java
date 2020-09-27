@@ -20,7 +20,7 @@ public class Professor {
 
     }
 
-    public int getAgenda() {
+    public Agenda getAgenda() {
         return agenda;
     }
 
