@@ -175,6 +175,15 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void exibeItensNaTela(String tipo){
+        if(tipo == "aluno"){
+            mProfessor.setVisible(false);
+        }else{
+            mAluno.setVisible(false);
+            mGerenciarGrupos.setVisible(false);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar1;

@@ -66,11 +66,7 @@ public class AlunoDao {
     
     public Boolean existeAluno(String id, String senha){
         Aluno achouAluno = get(Integer.parseInt(id));
-        if(achouAluno == null || achouAluno.getSenha() == senha) {
-            return false;
-        } else {
-            return true;                
-        }
+        return !(achouAluno == null || achouAluno.getSenha() == senha);
     }
 
     public Aluno get(Integer id) {

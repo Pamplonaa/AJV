@@ -30,9 +30,10 @@ public class ControladorPrincipal {
         ControladorLogin.getInstance().exibeTelaLogin();   
     }
     
-    public void abreTelaInicial(){
-                telaInicial.setLocationRelativeTo(null);
+    public void abreTelaInicial(String tipoDeAcesso){
+        telaInicial.setLocationRelativeTo(null);
         telaInicial.setVisible(Boolean.TRUE);
+        telaInicial.exibeItensNaTela(tipoDeAcesso);
     }
     
 }

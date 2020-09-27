@@ -27,13 +27,6 @@ public class Aluno implements Serializable{
         
     }
 
-    public Aluno(int equipeId, int id, String nome, String senha) {
-        this.equipeId = equipeId;
-        this.id = id;
-        this.nome = nome;
-        this.senha = senha;
-    }
-
     public int getEquipeId() {
         return equipeId;
     }

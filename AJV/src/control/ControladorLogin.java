@@ -6,8 +6,11 @@
 package control;
 
 import dao.AlunoDao;
+import dao.ProfessorDao;
 import javax.swing.JOptionPane;
-import model.Aluno;
+import model.Disciplina;
+import model.Professor;
+import model.Agenda;
 import view.TelaLogin;
 /**
  *
@@ -37,19 +40,30 @@ public class ControladorLogin {
     public void login() {
         String login[] = telaLogin.dadosLogin();
         if("Aluno".equals(login[2])){
-            System.out.println(login[2]);
             Boolean encontrou = false;
            AlunoDao aluno = AlunoDao.getInstance();
            encontrou = aluno.existeAluno(login[0], login[1]);
             if(!encontrou){
             JOptionPane.showMessageDialog(telaLogin, "Login inválido");
-            Aluno newAluno;
-               newAluno = new Aluno( 0, Integer.parseInt(login[0]), "Epaminondas",login[1]);
-               AlunoDao.getInstance().put(newAluno);
-               AlunoDao.getInstance().persist();
-                System.out.println(newAluno.getNome());
             }else {
-                ControladorPrincipal.getInstance().abreTelaInicial();
+                ControladorPrincipal.getInstance().abreTelaInicial("aluno");
+            }
+        }else{
+            Boolean encontrou = false;
+           ProfessorDao professor = ProfessorDao.getInstance();
+           encontrou = professor.existeProfessor(login[0], login[1]);
+            if(!encontrou){
+            JOptionPane.showMessageDialog(telaLogin, "Login inválido");
+            Professor newProfessor = new Professor();
+            newProfessor.setProfessorId(456789);
+            newProfessor.setSenha("456789");
+            newProfessor.setDisciplina(new Disciplina());
+            newProfessor.setAgenda(new Agenda());
+            professor.put(newProfessor);
+            professor.persist();
+            
+            }else {
+                ControladorPrincipal.getInstance().abreTelaInicial("professor");
             }
         }
     }

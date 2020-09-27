@@ -1,3 +1,8 @@
+package model;
+
+
+import java.util.ArrayList;
+
 
 
 /**
@@ -8,11 +13,12 @@
 public class Agenda {
 
 	private int disciplinaId;
-	private ArrayList equipeIds;
-	private ArrayList horarios;
+	private ArrayList<Integer> equipeIds;
+	private ArrayList<Integer> horarios;
 
 	public Agenda(){
-
+            this.equipeIds = new ArrayList<Integer>();
+            this.horarios = new ArrayList<Integer>();
 	}
 
 	public void finalize() throws Throwable {
