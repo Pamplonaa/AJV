@@ -7,12 +7,13 @@ package control;
 
 import dao.AlunoDao;
 import javax.swing.JOptionPane;
+import model.Aluno;
 import view.TelaLogin;
 /**
  *
  * @author jcmartins81
  */
-class ControladorLogin {
+public class ControladorLogin {
 
    private static ControladorLogin instance;
     private final TelaLogin telaLogin;
@@ -35,18 +36,21 @@ class ControladorLogin {
     
     public void login() {
         String login[] = telaLogin.dadosLogin();
-        if(login[2] == "Aluno"){
+        if("Aluno".equals(login[2])){
+            System.out.println(login[2]);
+            Boolean encontrou = false;
            AlunoDao aluno = AlunoDao.getInstance();
-           String mensagem = aluno.existeUsuario(login[0], login[1]);
-            if(mensagem.equals("")){
-            JOptionPane.showMessageDialog(telaLogin, Erros.LOGIN_INVALIDO.getValor());
-            }else if(mensagem.equals(Cargos.ADMINISTRADOR.toString())){
-                this.fechaTelaLogin();
-                ControladorPrincipal.getInstance().carregaTelaPrincipalAdmin();
-            }else{
-                this.fechaTelaLogin();
-                ControladorPrincipal.getInstance().carregaTelaPrincipalFuncionarios();
-        }
+           encontrou = aluno.existeAluno(login[0], login[1]);
+            if(!encontrou){
+            JOptionPane.showMessageDialog(telaLogin, "Login inválido");
+            Aluno newAluno;
+               newAluno = new Aluno( 0, Integer.parseInt(login[0]), "Epaminondas",login[1]);
+               AlunoDao.getInstance().put(newAluno);
+               AlunoDao.getInstance().persist();
+                System.out.println(newAluno.getNome());
+            }else {
+                ControladorPrincipal.getInstance().abreTelaInicial();
+            }
         }
     }
     

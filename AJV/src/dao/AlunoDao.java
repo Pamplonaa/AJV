@@ -40,7 +40,7 @@ public class AlunoDao {
     
     public void put(Aluno aluno) {
         //falta testar se é nulo
-        cacheAlunos.put(aluno.getMatricula(), aluno);
+        cacheAlunos.put(aluno.getId(), aluno);
         persist();
     }
 
@@ -62,11 +62,20 @@ public class AlunoDao {
         } catch(IOException ex){
             System.out.println(ex);
         }
-    }  
-
-    public Aluno get(Integer matricula) {
-        return cacheAlunos.get(matricula);
     }
+    
+    public Boolean existeAluno(String id, String senha){
+        Aluno achouAluno = get(Integer.parseInt(id));
+        if(achouAluno == null || achouAluno.getSenha() == senha) {
+            return false;
+        } else {
+            return true;                
+        }
+    }
+
+    public Aluno get(Integer id) {
+        return cacheAlunos.get(id);
+    }    
 
     public Collection list() {
         return cacheAlunos.values();
@@ -95,7 +104,7 @@ public class AlunoDao {
     
     public void remove(Aluno aluno){
         if(aluno != null){
-            cacheAlunos.remove(aluno.getMatricula());
+            cacheAlunos.remove(aluno.getId());
         }
     }
 }

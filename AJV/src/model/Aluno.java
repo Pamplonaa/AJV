@@ -1,3 +1,8 @@
+package model;
+
+
+import java.io.Serializable;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,12 +14,56 @@
  *
  * @author jcmartins81
  */
-public class Aluno {
-	private Disciplina disciplina;
+public class Aluno implements Serializable{
+
+
+        private static final long serialVersionUID = 1L;
 	private int equipeId;
 	private int id;
-	private string nome;
-        private int nota;
+	private String nome;
+        private String senha;
 
+    public Aluno() {
+        
+    }
+
+    public Aluno(int equipeId, int id, String nome, String senha) {
+        this.equipeId = equipeId;
+        this.id = id;
+        this.nome = nome;
+        this.senha = senha;
+    }
+
+    public int getEquipeId() {
+        return equipeId;
+    }
+
+    public void setEquipeId(int equipeId) {
+        this.equipeId = equipeId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }        
+    
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
     
 }

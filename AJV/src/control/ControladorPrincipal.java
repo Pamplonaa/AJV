@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package control;
-
+import view.TelaInicial;
 
 /**
  *
@@ -13,9 +13,10 @@ package control;
 public class ControladorPrincipal {
 
     private static ControladorPrincipal instance;
+    private final TelaInicial telaInicial;
     
     private ControladorPrincipal() {
-
+        telaInicial = new TelaInicial();
     }
     
     public static synchronized ControladorPrincipal getInstance(){
@@ -26,7 +27,12 @@ public class ControladorPrincipal {
     }
     
     public void inicia(){
-        ControladorLogin.getInstance().exibeTelaLogin();        
+        ControladorLogin.getInstance().exibeTelaLogin();   
+    }
+    
+    public void abreTelaInicial(){
+                telaInicial.setLocationRelativeTo(null);
+        telaInicial.setVisible(Boolean.TRUE);
     }
     
 }

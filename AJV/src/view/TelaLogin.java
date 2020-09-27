@@ -5,6 +5,8 @@
  */
 package view;
 
+import control.ControladorLogin;
+
 /**
  *
  * @author jcmartins81
@@ -29,7 +31,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        tfLogin = new javax.swing.JTextField();
+        tfID = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         pfSenha = new javax.swing.JPasswordField();
         btEntrar = new javax.swing.JButton();
@@ -40,12 +42,12 @@ public class TelaLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Login");
+        jLabel1.setText("ID");
 
-        tfLogin.setText("Login");
-        tfLogin.addActionListener(new java.awt.event.ActionListener() {
+        tfID.setText("ID do Usuário");
+        tfID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfLoginActionPerformed(evt);
+                tfIDActionPerformed(evt);
             }
         });
 
@@ -54,6 +56,11 @@ public class TelaLogin extends javax.swing.JFrame {
         pfSenha.setText("jPasswordField1");
 
         btEntrar.setText("Entrar");
+        btEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btEntrarMouseClicked(evt);
+            }
+        });
         btEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btEntrarActionPerformed(evt);
@@ -81,7 +88,7 @@ public class TelaLogin extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel2)
                                 .addComponent(jLabel1)
-                                .addComponent(tfLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tfID, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(pfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(122, 122, 122))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -92,7 +99,7 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -112,13 +119,17 @@ public class TelaLogin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tfLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfLoginActionPerformed
+    private void tfIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tfLoginActionPerformed
+    }//GEN-LAST:event_tfIDActionPerformed
 
     private void btEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btEntrarActionPerformed
+
+    private void btEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btEntrarMouseClicked
+        ControladorLogin.getInstance().login();
+    }//GEN-LAST:event_btEntrarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -148,16 +159,14 @@ public class TelaLogin extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaLogin().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new TelaLogin().setVisible(true);
         });
     }
     
     public String[] dadosLogin() {
         String login[] = new String[4];
-        login[0] = tfLogin.getText();
+        login[0] = tfID.getText();
         login[1] = String.valueOf(pfSenha.getPassword());
         login[2] = cbTipoDeLogin.getSelectedItem().toString();
         return login;
@@ -171,6 +180,6 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPasswordField pfSenha;
-    private javax.swing.JTextField tfLogin;
+    private javax.swing.JTextField tfID;
     // End of variables declaration//GEN-END:variables
 }
