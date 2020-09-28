@@ -20,23 +20,23 @@ public class ControladorLogin {
 
    private static ControladorLogin instance;
     private final TelaLogin telaLogin;
-    
+
     private ControladorLogin(){
         telaLogin = new TelaLogin();
     }
-    
+
     public static synchronized ControladorLogin getInstance(){
         if(instance == null){
             return instance = new ControladorLogin();
         }
         return instance;
     }
-    
+
     public void exibeTelaLogin(){
         telaLogin.setLocationRelativeTo(null);
         telaLogin.setVisible(Boolean.TRUE);
     }
-    
+
     public void login() {
         String login[] = telaLogin.dadosLogin();
         if("Aluno".equals(login[2])){
@@ -59,7 +59,7 @@ public class ControladorLogin {
             }
         }
     }
-    
+
     public void fechaTelaLogin() {
         telaLogin.setVisible(Boolean.FALSE);
     }

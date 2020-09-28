@@ -5,6 +5,8 @@
  */
 package view;
 
+import control.ControladorGrupo;
+
 /**
  *
  * @author jcmartins81
@@ -70,6 +72,11 @@ public class TelaInicial extends javax.swing.JFrame {
         mAluno.setText("Aluno");
 
         miCriarGrupo.setText("Criar Grupo");
+        miCriarGrupo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miCriarGrupoActionPerformed(evt);
+            }
+        });
         mAluno.add(miCriarGrupo);
 
         jMenuItem2.setText("Ver Convites Recebidos");
@@ -140,6 +147,11 @@ public class TelaInicial extends javax.swing.JFrame {
     private void miAceitarPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAceitarPedidosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_miAceitarPedidosActionPerformed
+
+    private void miCriarGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCriarGrupoActionPerformed
+       ControladorGrupo.getInstance().exibeTelaCriarGrupo();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_miCriarGrupoActionPerformed
 
     /**
      * @param args the command line arguments
