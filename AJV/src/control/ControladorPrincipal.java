@@ -14,6 +14,7 @@ public class ControladorPrincipal {
 
     private static ControladorPrincipal instance;
     private final TelaInicial telaInicial;
+    private int usuarioId;
     
     private ControladorPrincipal() {
         telaInicial = new TelaInicial();
@@ -30,10 +31,20 @@ public class ControladorPrincipal {
         ControladorLogin.getInstance().exibeTelaLogin();   
     }
     
-    public void abreTelaInicial(String tipoDeAcesso){
+    public void abreTelaInicial(String tipoDeAcesso, int id){
         telaInicial.setLocationRelativeTo(null);
         telaInicial.setVisible(Boolean.TRUE);
         telaInicial.exibeItensNaTela(tipoDeAcesso);
+        this.usuarioId = id;
     }
+
+    public int getUsuarioId() {
+        return usuarioId;
+    }
+
+    public void setUsuarioId(int usuarioId) {
+        this.usuarioId = usuarioId;
+    }
+    
     
 }

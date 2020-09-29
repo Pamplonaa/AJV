@@ -1,11 +1,13 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * @author Pizetta
  * @version 1.0
  * @created 27-set-2020 10:21:49
  */
-public class Professor {
+public class Professor  implements Serializable{
 
 	private Agenda agenda;
 	private Disciplina disciplina;
@@ -17,7 +19,8 @@ public class Professor {
      *
      */
     public Professor(){
-
+        this.agenda = new Agenda();
+        this.disciplina = new Disciplina();
     }
 
     public Agenda getAgenda() {

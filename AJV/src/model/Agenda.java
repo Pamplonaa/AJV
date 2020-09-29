@@ -1,6 +1,7 @@
 package model;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
@@ -10,7 +11,7 @@ import java.util.ArrayList;
  * @version 1.0
  * @created 27-set-2020 10:21:39
  */
-public class Agenda {
+public class Agenda  implements Serializable{
 
 	private int disciplinaId;
 	private ArrayList<Integer> equipeIds;

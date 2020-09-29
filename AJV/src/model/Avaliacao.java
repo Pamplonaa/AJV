@@ -1,5 +1,7 @@
 package model;
 
+import java.io.Serializable;
+
 
 
 /**
@@ -7,7 +9,7 @@ package model;
  * @version 1.0
  * @created 27-set-2020 10:21:44
  */
-public class Avaliacao {
+public class Avaliacao  implements Serializable{
 
 	private String comentario;
 	private int id;

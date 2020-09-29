@@ -7,10 +7,9 @@ package control;
 
 import javax.swing.JOptionPane;
 import model.Atividade;
-import view.CriarAtividade;
+import view.TelaCriarAtividade;
 import dao.AtividadeDao;
 import java.security.SecureRandom;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
@@ -28,7 +27,7 @@ public class ControladorAtividade {
 
     public static synchronized ControladorAtividade getInstance() {
         if (instance == null) {
-            return instance = new ControladorAtividade();
+            instance = new ControladorAtividade();
         }
         return instance;
     }
@@ -47,8 +46,8 @@ public class ControladorAtividade {
         } else {
             Boolean encontrou = false;
 
-            AtividadeDao AtividadeDao = AtividadeDao.getInstance();
-            encontrou = AtividadeDao.existeAtividade(randomId, titulo);
+            AtividadeDao atividadeDao = AtividadeDao.getInstance();
+            encontrou = atividadeDao.existeAtividade(randomId, titulo);
 
             Atividade atividade = new Atividade();
             atividade.setTitulo(titulo);

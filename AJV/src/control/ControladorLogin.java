@@ -46,7 +46,8 @@ public class ControladorLogin {
             if(!encontrou){
             JOptionPane.showMessageDialog(telaLogin, "Login inválido");
             }else {
-                ControladorPrincipal.getInstance().abreTelaInicial("aluno");
+                telaLogin.setVisible(false);
+                ControladorPrincipal.getInstance().abreTelaInicial("aluno", login[0]);
             }
         }else{
             Boolean encontrou = false;
@@ -55,7 +56,9 @@ public class ControladorLogin {
             if(!encontrou){
                 JOptionPane.showMessageDialog(telaLogin, "Login inválido");            
             }else {
-                ControladorPrincipal.getInstance().abreTelaInicial("professor");
+                telaLogin.setVisible(false);
+                ControladorPrincipal.getInstance().abreTelaInicial("professor", login[0]);
+                
             }
         }
     }

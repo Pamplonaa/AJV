@@ -1,11 +1,13 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * @author Pizetta
  * @version 1.0
  * @created 27-set-2020 10:21:43
  */
-public class Atividade {
+public class Atividade  implements Serializable{
 
     private int atividadeId;
     private Avaliacao avaliacao;
