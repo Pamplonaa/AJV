@@ -13,6 +13,7 @@ public class Atividade  implements Serializable{
     private Avaliacao avaliacao;
     private int numeroParticipantesGrupo;
     public Professor professorId;
+    private String titulo;
 
     public Atividade() {
 
@@ -55,7 +56,7 @@ public class Atividade  implements Serializable{
     }
 
     public void setTitulo(String titulo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.titulo = titulo;
     }
 
 }//end Atividade

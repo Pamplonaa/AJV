@@ -39,7 +39,7 @@ public class ControladorAtividade {
 
     public void criarAtividade() throws NoSuchAlgorithmException {
         SecureRandom prng = SecureRandom.getInstance("SHA1PRNG");
-        String randomId = Integer.valueOf(prng.nextInt()).toString();
+        String randomId = Integer.toString(prng.nextInt());
         String titulo = telaCriarAtividade.tituloAtividade();
         int participantes = telaCriarAtividade.numParticipantes();
         if (titulo.isEmpty()) {

@@ -15,7 +15,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import model.Atividade;
 
-import java.util.UUID;
 
 /**
  *
@@ -24,7 +23,7 @@ import java.util.UUID;
 public class AtividadeDao {
 
     private static AtividadeDao instance;
-    private String filename = "atividades.cla";
+    private final String filename = "atividades.cla";
     private HashMap<Integer, Atividade> cacheAtividades;
 
     public static AtividadeDao getInstance() {
@@ -58,7 +57,6 @@ public class AtividadeDao {
             oo.close();
             fout.close();
             oo = null;
-            fout = null;
         } catch (FileNotFoundException ex) {
             System.out.println(ex);
         } catch (IOException ex) {
@@ -89,13 +87,8 @@ public class AtividadeDao {
             oi.close();
             fin.close();
             oi = null;
-            fin = null;
 
-        } catch (ClassNotFoundException ex) {
-            System.out.println(ex);
-        } catch (FileNotFoundException ex) {
-            System.out.println(ex);
-        } catch (IOException ex) {
+        } catch (ClassNotFoundException | IOException ex) {
             System.out.println(ex);
         }
     }

@@ -5,6 +5,11 @@
  */
 package view;
 
+import control.ControladorAtividade;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author jcmartins81
@@ -109,11 +114,15 @@ public class TelaCriarAtividade extends javax.swing.JFrame {
     }//GEN-LAST:event_tfNumeroParticipantesActionPerformed
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
-        // TODO add your handling code here:
+        try {
+            ControladorAtividade.getInstance().criarAtividade();
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(TelaCriarAtividade.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
-        // TODO add your handling code here:
+        ControladorAtividade.getInstance().fechaTelaCriarAtividade(); 
     }//GEN-LAST:event_btCancelarActionPerformed
 
     private void tfTituloAtividadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfTituloAtividadeActionPerformed
