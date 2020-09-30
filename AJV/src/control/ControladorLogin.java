@@ -49,18 +49,11 @@ public class ControladorLogin {
                AlunoDao aluno = AlunoDao.getInstance();
                encontrou = aluno.existeAluno(login[0], login[1]);
                 if(!encontrou){
-                JOptionPane.showMessageDialog(telaLogin, "Login inválido");
-                Aluno newAluno = new Aluno();
-                newAluno.setId(Integer.parseInt(login[0]));
-                newAluno.setSenha(login[1]);
-                newAluno.setNome("Francilaine");
-                aluno.put(newAluno);
-                aluno.persist();
-                
-                        
+                    JOptionPane.showMessageDialog(telaLogin, "Login inválido");                
                 }else {
                     telaLogin.setVisible(false);
-                    ControladorPrincipal.getInstance().abreTelaInicial("aluno", Integer.parseInt(login[0]));
+                    Aluno alunoLogado = aluno.get(Integer.parseInt(login[0]));
+                    ControladorPrincipal.getInstance().abreTelaInicial("aluno", Integer.parseInt(login[0]), alunoLogado.getNome());
                 }
             }else{
                 Boolean encontrou = false;
@@ -70,7 +63,8 @@ public class ControladorLogin {
                     JOptionPane.showMessageDialog(telaLogin, "Login inválido"); 
                 }else {
                     telaLogin.setVisible(false);
-                    ControladorPrincipal.getInstance().abreTelaInicial("professor", Integer.parseInt(login[0]));
+                    Professor professorLogado = professor.get(Integer.parseInt(login[0]));
+                    ControladorPrincipal.getInstance().abreTelaInicial("professor", Integer.parseInt(login[0]), professorLogado.getNome());
 
                 }
             }
@@ -83,8 +77,16 @@ public class ControladorLogin {
     
 }
 
-    //                Professor newProfessor = new Professor();
-    //                newProfessor.setProfessorId(456789);
-    //                newProfessor.setSenha("456789");
-    //                professor.put(newProfessor);
-    //                professor.persist();
+//                    Professor newProfessor = new Professor();
+//                    newProfessor.setProfessorId(456789);
+//                    newProfessor.setSenha("456789");
+//                    newProfessor.setNome("Epitafio");
+//                    professor.put(newProfessor);
+//                    professor.persist();
+
+    //                Aluno newAluno = new Aluno();
+    //                newAluno.setId(Integer.parseInt(login[0]));
+    //                newAluno.setSenha(login[1]);
+    //                newAluno.setNome("Francilaine");
+    //                aluno.put(newAluno);
+    //                aluno.persist();

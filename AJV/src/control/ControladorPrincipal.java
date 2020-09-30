@@ -31,8 +31,9 @@ public class ControladorPrincipal {
         ControladorLogin.getInstance().exibeTelaLogin();   
     }
     
-    public void abreTelaInicial(String tipoDeAcesso, int id){
+    public void abreTelaInicial(String tipoDeAcesso, int id, String nome){
         telaInicial.setLocationRelativeTo(null);
+        telaInicial.setTitle("Usuario Logado: " + nome);
         telaInicial.setVisible(Boolean.TRUE);
         telaInicial.exibeItensNaTela(tipoDeAcesso);
         this.usuarioId = id;

@@ -9,6 +9,7 @@ import java.io.Serializable;
  */
 public class Professor  implements Serializable{
 
+        private static final long serialVersionUID = 1L;
 	private Agenda agenda;
 	private Disciplina disciplina;
 	private String nome;
