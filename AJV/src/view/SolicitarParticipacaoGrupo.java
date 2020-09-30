@@ -35,10 +35,13 @@ public class SolicitarParticipacaoGrupo extends javax.swing.JFrame {
         jbCancelarSolicitacao = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Solicitar participação em um grupo");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
 
         jLabel2.setText("Escolha o grupo:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 46, -1, -1));
 
         jcbEscolherGrupo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jcbEscolherGrupo.addActionListener(new java.awt.event.ActionListener() {
@@ -46,10 +49,13 @@ public class SolicitarParticipacaoGrupo extends javax.swing.JFrame {
                 jcbEscolherGrupoActionPerformed(evt);
             }
         });
+        getContentPane().add(jcbEscolherGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(109, 41, -1, -1));
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 74, 272, -1));
 
         jbEnviarSolicitacao.setText("Enviar");
         jbEnviarSolicitacao.addActionListener(new java.awt.event.ActionListener() {
@@ -57,6 +63,7 @@ public class SolicitarParticipacaoGrupo extends javax.swing.JFrame {
                 jbEnviarSolicitacaoActionPerformed(evt);
             }
         });
+        getContentPane().add(jbEnviarSolicitacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 168, 73, -1));
 
         jbCancelarSolicitacao.setText("Cancelar");
         jbCancelarSolicitacao.addActionListener(new java.awt.event.ActionListener() {
@@ -64,46 +71,7 @@ public class SolicitarParticipacaoGrupo extends javax.swing.JFrame {
                 jbCancelarSolicitacaoActionPerformed(evt);
             }
         });
-
-        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLabel1)
-                            .add(layout.createSequentialGroup()
-                                .add(jLabel2)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(jcbEscolherGrupo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 272, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                    .add(layout.createSequentialGroup()
-                        .add(65, 65, 65)
-                        .add(jbEnviarSolicitacao, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 73, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(18, 18, 18)
-                        .add(jbCancelarSolicitacao, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 73, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(33, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jLabel1)
-                .add(18, 18, 18)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel2)
-                    .add(jcbEscolherGrupo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jbEnviarSolicitacao)
-                    .add(jbCancelarSolicitacao))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        getContentPane().add(jbCancelarSolicitacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 168, 73, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
