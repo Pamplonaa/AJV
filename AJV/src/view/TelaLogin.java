@@ -44,7 +44,6 @@ public class TelaLogin extends javax.swing.JFrame {
 
         jLabel1.setText("ID");
 
-        tfID.setText("ID do Usuário");
         tfID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfIDActionPerformed(evt);
@@ -53,7 +52,11 @@ public class TelaLogin extends javax.swing.JFrame {
 
         jLabel2.setText("Senha");
 
-        pfSenha.setText("jPasswordField1");
+        pfSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pfSenhaActionPerformed(evt);
+            }
+        });
 
         btEntrar.setText("Entrar");
         btEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -130,6 +133,10 @@ public class TelaLogin extends javax.swing.JFrame {
     private void btEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btEntrarMouseClicked
         ControladorLogin.getInstance().login();
     }//GEN-LAST:event_btEntrarMouseClicked
+
+    private void pfSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pfSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pfSenhaActionPerformed
 
     /**
      * @param args the command line arguments
