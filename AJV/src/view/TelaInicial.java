@@ -46,6 +46,7 @@ public class TelaInicial extends javax.swing.JFrame {
         mListar = new javax.swing.JMenu();
         miAgenda = new javax.swing.JMenuItem();
         milistarAlunos = new javax.swing.JMenuItem();
+        jmiListaDeGrupos = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -118,6 +119,14 @@ public class TelaInicial extends javax.swing.JFrame {
         milistarAlunos.setText("Alunos");
         mListar.add(milistarAlunos);
 
+        jmiListaDeGrupos.setText("Grupos");
+        jmiListaDeGrupos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiListaDeGruposActionPerformed(evt);
+            }
+        });
+        mListar.add(jmiListaDeGrupos);
+
         jMenuBar1.add(mListar);
 
         setJMenuBar(jMenuBar1);
@@ -152,6 +161,10 @@ public class TelaInicial extends javax.swing.JFrame {
        ControladorGrupo.getInstance().exibeTelaCriarGrupo();
         // TODO add your handling code here:
     }//GEN-LAST:event_miCriarGrupoActionPerformed
+
+    private void jmiListaDeGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiListaDeGruposActionPerformed
+        ControladorGrupo.getInstance().exibeTelaListarGrupos();
+    }//GEN-LAST:event_jmiListaDeGruposActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,6 +215,7 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jmiListaDeGrupos;
     private javax.swing.JMenu mAluno;
     private javax.swing.JMenu mGerenciarGrupos;
     private javax.swing.JMenu mListar;

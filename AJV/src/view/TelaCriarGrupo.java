@@ -6,6 +6,9 @@
 package view;
 
 import control.ControladorGrupo;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -112,7 +115,11 @@ public class TelaCriarGrupo extends javax.swing.JFrame {
     }//GEN-LAST:event_tfTituloGrupoActionPerformed
 
     private void jbCriarGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCriarGrupoActionPerformed
-        ControladorGrupo.getInstance().criarGrupo();        // TODO add your handling code here:
+        try {
+            ControladorGrupo.getInstance().criarGrupo();        // TODO add your handling code here:
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(TelaCriarGrupo.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jbCriarGrupoActionPerformed
 
     private void jbCancelarCriacaoGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarCriacaoGrupoActionPerformed

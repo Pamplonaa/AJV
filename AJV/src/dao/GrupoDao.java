@@ -34,7 +34,7 @@ public class GrupoDao {
         return instance;
     }
     
-     private GrupoDao() {
+     public GrupoDao() {
         this.cacheGrupos = new HashMap<>();
         load();
     }
@@ -65,9 +65,8 @@ public class GrupoDao {
         }
     }
     
-    public Boolean existeGrupo(String grupoId, String titulo){
-        Grupo achouGrupo = get(Integer.parseInt(grupoId));
-        return !(achouGrupo == null || achouGrupo.getTitulo() == titulo);
+    public Boolean existeGrupo(String titulo){
+        return this.cacheGrupos.containsValue(titulo);
     }
 
     public Grupo get(Integer id) {

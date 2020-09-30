@@ -5,13 +5,16 @@
  */
 package control;
 
+import dao.AlunoDao;
 import javax.swing.JOptionPane;
 import model.Grupo;
 import view.TelaCriarGrupo;
 import dao.GrupoDao;
 import java.security.SecureRandom;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.Collection;
+import view.TelaListarGrupos;
 
 /**
  *
@@ -21,9 +24,11 @@ public class ControladorGrupo {
     
     private static ControladorGrupo instance;
     private final TelaCriarGrupo telaCriarGrupo;
+    private final TelaListarGrupos telaListarGrupos;
     
     private ControladorGrupo() {
         telaCriarGrupo = new TelaCriarGrupo();
+        telaListarGrupos = new TelaListarGrupos();
     }
     
     public static synchronized ControladorGrupo getInstance() {
@@ -48,11 +53,15 @@ public class ControladorGrupo {
             Boolean encontrou = false;
             
             GrupoDao grupoDao = GrupoDao.getInstance();
-            encontrou = grupoDao.existeGrupo(randomId, titulo);
+            encontrou = grupoDao.existeGrupo(titulo);
+            System.out.println(encontrou);
             
             Grupo grupo = new Grupo();
+            
             grupo.setTitulo(titulo);
             grupo.setGrupoId(Integer.parseInt(randomId));
+            grupo.setAlunoLider(AlunoDao.getInstance().get(ControladorPrincipal.getInstance().getUsuarioId()));
+
             grupoDao.put(grupo);
             JOptionPane.showMessageDialog(telaCriarGrupo, "Grupo criado com sucesso");
             telaCriarGrupo.setVisible(Boolean.FALSE);
@@ -61,6 +70,29 @@ public class ControladorGrupo {
     
     public void fechaTelaCriarGrupo() {
         telaCriarGrupo.setVisible(Boolean.FALSE);
+    }
+
+    public void exibeTelaListarGrupos(){
+        telaListarGrupos.setLocationRelativeTo(null);
+        telaListarGrupos.setVisible(Boolean.TRUE);
+    }
+    
+    public void fechaTelaListarGrupos() {
+       telaListarGrupos.setVisible(Boolean.FALSE);
+    }
+    
+    public ArrayList<Grupo> collectionToArrayList(Collection colecao){
+        ArrayList<Grupo> grupos = new ArrayList<>();
+        
+        for(Object c : colecao){
+            grupos.add((Grupo) c);
+        }
+        
+        return grupos;
+    }
+
+    public ArrayList<Grupo> retornaGrupos(){
+        return this.collectionToArrayList(GrupoDao.getInstance().list());
     }
     
 }

@@ -102,6 +102,14 @@
                 <Property name="text" type="java.lang.String" value="Alunos"/>
               </Properties>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jmiListaDeGrupos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Grupos"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiListaDeGruposActionPerformed"/>
+              </Events>
+            </MenuItem>
           </SubComponents>
         </Menu>
       </SubComponents>
