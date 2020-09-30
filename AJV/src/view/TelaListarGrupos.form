@@ -26,9 +26,19 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jbOkListarGrupos" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="listGrupos" min="-2" pref="375" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="listGrupos" min="-2" pref="375" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jbOkListarGrupos" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jbAtualizarListaGrupos" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -42,7 +52,10 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="listGrupos" pref="199" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jbOkListarGrupos" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jbOkListarGrupos" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jbAtualizarListaGrupos" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -63,6 +76,14 @@
       </Events>
     </Component>
     <Component class="java.awt.List" name="listGrupos">
+    </Component>
+    <Component class="javax.swing.JButton" name="jbAtualizarListaGrupos">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Atualizar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbAtualizarListaGruposActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

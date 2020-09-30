@@ -77,7 +77,7 @@ public class GrupoDao {
         return cacheGrupos.values();
     }
 
-    private void load() {
+    public void load() {
         try{
             FileInputStream fin = new FileInputStream(filename);
             ObjectInputStream oi = new ObjectInputStream(fin);

@@ -38,6 +38,7 @@ public class TelaListarGrupos extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jbOkListarGrupos = new javax.swing.JButton();
         listGrupos = new java.awt.List();
+        jbAtualizarListaGrupos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,6 +51,13 @@ public class TelaListarGrupos extends javax.swing.JFrame {
             }
         });
 
+        jbAtualizarListaGrupos.setText("Atualizar");
+        jbAtualizarListaGrupos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAtualizarListaGruposActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -57,9 +65,16 @@ public class TelaListarGrupos extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jbOkListarGrupos, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(listGrupos, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(listGrupos, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jbOkListarGrupos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbAtualizarListaGrupos)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -70,7 +85,9 @@ public class TelaListarGrupos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(listGrupos, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jbOkListarGrupos)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbOkListarGrupos)
+                    .addComponent(jbAtualizarListaGrupos))
                 .addContainerGap())
         );
 
@@ -80,6 +97,10 @@ public class TelaListarGrupos extends javax.swing.JFrame {
     private void jbOkListarGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbOkListarGruposActionPerformed
         ControladorGrupo.getInstance().fechaTelaListarGrupos();
     }//GEN-LAST:event_jbOkListarGruposActionPerformed
+
+    private void jbAtualizarListaGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAtualizarListaGruposActionPerformed
+        this.setListaGrupos();
+    }//GEN-LAST:event_jbAtualizarListaGruposActionPerformed
 
     /**
      * @param args the command line arguments
@@ -118,11 +139,13 @@ public class TelaListarGrupos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jbAtualizarListaGrupos;
     private javax.swing.JButton jbOkListarGrupos;
     private java.awt.List listGrupos;
     // End of variables declaration//GEN-END:variables
 
     public void setListaGrupos(){
+        listGrupos.removeAll();
         Collection colecao = GrupoDao.getInstance().list();
         ArrayList<Grupo> grupos = new ArrayList<>();
         
