@@ -54,4 +54,8 @@ public class Atividade  implements Serializable{
         this.professorId = professorId;
     }
 
+    public void setTitulo(String titulo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }//end Atividade

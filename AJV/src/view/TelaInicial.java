@@ -5,6 +5,7 @@
  */
 package view;
 
+import control.ControladorAtividade;
 import control.ControladorGrupo;
 
 /**
@@ -55,6 +56,11 @@ public class TelaInicial extends javax.swing.JFrame {
         mProfessor.setText("Professor");
 
         miCriarAtividade.setText("Criar Atividade");
+        miCriarAtividade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miCriarAtividadeActionPerformed(evt);
+            }
+        });
         mProfessor.add(miCriarAtividade);
 
         miEditarGrupos.setText("Editar Grupos");
@@ -158,13 +164,17 @@ public class TelaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_miAceitarPedidosActionPerformed
 
     private void miCriarGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCriarGrupoActionPerformed
-       ControladorGrupo.getInstance().exibeTelaCriarGrupo();
+        ControladorGrupo.getInstance().exibeTelaCriarGrupo();
         // TODO add your handling code here:
     }//GEN-LAST:event_miCriarGrupoActionPerformed
 
     private void jmiListaDeGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiListaDeGruposActionPerformed
         ControladorGrupo.getInstance().exibeTelaListarGrupos();
     }//GEN-LAST:event_jmiListaDeGruposActionPerformed
+
+    private void miCriarAtividadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCriarAtividadeActionPerformed
+        ControladorAtividade.getInstance().exibeTelaCriarAtividade();
+    }//GEN-LAST:event_miCriarAtividadeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,11 +210,11 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
     }
-    
-    public void exibeItensNaTela(String tipo){
-        if(tipo == "aluno"){
+
+    public void exibeItensNaTela(String tipo) {
+        if (tipo == "aluno") {
             mProfessor.setVisible(false);
-        }else{
+        } else {
             mAluno.setVisible(false);
             mGerenciarGrupos.setVisible(false);
         }

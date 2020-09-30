@@ -40,7 +40,8 @@ public class ControladorAtividade {
     public void criarAtividade() throws NoSuchAlgorithmException {
         SecureRandom prng = SecureRandom.getInstance("SHA1PRNG");
         String randomId = Integer.valueOf(prng.nextInt()).toString();
-        String titulo = telaCriarAtividade.dadosAtividade();
+        String titulo = telaCriarAtividade.tituloAtividade();
+        int participantes = telaCriarAtividade.numParticipantes();
         if (titulo.isEmpty()) {
             JOptionPane.showMessageDialog(telaCriarAtividade, "Informe um título válido");
         } else {
@@ -51,6 +52,7 @@ public class ControladorAtividade {
 
             Atividade atividade = new Atividade();
             atividade.setTitulo(titulo);
+            atividade.setNumeroParticipantesGrupo(participantes);
             atividade.setAtividadeId(Integer.parseInt(randomId));
             atividadeDao.put(atividade);
             JOptionPane.showMessageDialog(telaCriarAtividade, "Atividade criada com sucesso");
