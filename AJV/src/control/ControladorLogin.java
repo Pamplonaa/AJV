@@ -49,7 +49,15 @@ public class ControladorLogin {
                AlunoDao aluno = AlunoDao.getInstance();
                encontrou = aluno.existeAluno(login[0], login[1]);
                 if(!encontrou){
-                    JOptionPane.showMessageDialog(telaLogin, "Login inválido");                
+                    JOptionPane.showMessageDialog(telaLogin, "Login inválido");  
+                    
+                    Aluno newAluno = new Aluno();
+                    newAluno.setId(Integer.parseInt(login[0]));
+                    newAluno.setSenha(login[1]);
+                    newAluno.setNome("Epaminondas");
+                    aluno.put(newAluno);
+                    aluno.persist();
+                    
                 }else {
                     telaLogin.setVisible(false);
                     Aluno alunoLogado = aluno.get(Integer.parseInt(login[0]));
@@ -61,6 +69,10 @@ public class ControladorLogin {
                encontrou = professor.existeProfessor(login[0], login[1]);
                 if(!encontrou){
                     JOptionPane.showMessageDialog(telaLogin, "Login inválido"); 
+                    
+                                       
+
+                    
                 }else {
                     telaLogin.setVisible(false);
                     Professor professorLogado = professor.get(Integer.parseInt(login[0]));
