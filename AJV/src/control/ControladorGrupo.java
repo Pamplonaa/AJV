@@ -53,8 +53,8 @@ public class ControladorGrupo {
             Boolean encontrou = false;
             
             GrupoDao grupoDao = GrupoDao.getInstance();
-            encontrou = grupoDao.existeGrupo(titulo);
-            System.out.println(encontrou);
+//            encontrou = grupoDao.existeGrupo(titulo);
+//            System.out.println(encontrou);
             
             Grupo grupo = new Grupo();
             
@@ -73,6 +73,7 @@ public class ControladorGrupo {
     }
 
     public void exibeTelaListarGrupos(){
+        telaListarGrupos.setListaGrupos();
         telaListarGrupos.setLocationRelativeTo(null);
         telaListarGrupos.setVisible(Boolean.TRUE);
     }
