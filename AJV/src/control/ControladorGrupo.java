@@ -69,6 +69,7 @@ public class ControladorGrupo {
     } 
     
     public void fechaTelaCriarGrupo() {
+        telaCriarGrupo.setListaGrupos();
         telaCriarGrupo.setVisible(Boolean.FALSE);
     }
 

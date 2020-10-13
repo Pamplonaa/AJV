@@ -6,6 +6,7 @@
 package view;
 
 import control.ControladorAtividade;
+import control.ControladorAvaliacao;
 import control.ControladorGrupo;
 
 /**
@@ -35,7 +36,7 @@ public class TelaInicial extends javax.swing.JFrame {
         mProfessor = new javax.swing.JMenu();
         miCriarAtividade = new javax.swing.JMenuItem();
         miEditarGrupos = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        jmiAvaliarGrupos = new javax.swing.JMenuItem();
         mAluno = new javax.swing.JMenu();
         miCriarGrupo = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -71,8 +72,13 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         mProfessor.add(miEditarGrupos);
 
-        jMenuItem3.setText("Avaliar Grupos");
-        mProfessor.add(jMenuItem3);
+        jmiAvaliarGrupos.setText("Avaliar Grupos");
+        jmiAvaliarGrupos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiAvaliarGruposActionPerformed(evt);
+            }
+        });
+        mProfessor.add(jmiAvaliarGrupos);
 
         jMenuBar1.add(mProfessor);
 
@@ -165,7 +171,6 @@ public class TelaInicial extends javax.swing.JFrame {
 
     private void miCriarGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCriarGrupoActionPerformed
         ControladorGrupo.getInstance().exibeTelaCriarGrupo();
-        // TODO add your handling code here:
     }//GEN-LAST:event_miCriarGrupoActionPerformed
 
     private void jmiListaDeGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiListaDeGruposActionPerformed
@@ -175,6 +180,10 @@ public class TelaInicial extends javax.swing.JFrame {
     private void miCriarAtividadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCriarAtividadeActionPerformed
         ControladorAtividade.getInstance().exibeTelaCriarAtividade();
     }//GEN-LAST:event_miCriarAtividadeActionPerformed
+
+    private void jmiAvaliarGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAvaliarGruposActionPerformed
+        ControladorAvaliacao.getInstance().exibeAvaliarGrupo();
+    }//GEN-LAST:event_jmiAvaliarGruposActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,7 +233,7 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jmiAvaliarGrupos;
     private javax.swing.JMenuItem jmiListaDeGrupos;
     private javax.swing.JMenu mAluno;
     private javax.swing.JMenu mGerenciarGrupos;

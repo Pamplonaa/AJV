@@ -6,9 +6,13 @@
 package view;
 
 import control.ControladorGrupo;
+import dao.GrupoDao;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Grupo;
 
 /**
  *
@@ -38,6 +42,8 @@ public class TelaCriarGrupo extends javax.swing.JFrame {
         jbCriarGrupo = new javax.swing.JButton();
         jbCancelarCriacaoGrupo = new javax.swing.JButton();
         jbConvidarTelaCriarGrupo = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        listGruposExistentes = new java.awt.List();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,6 +73,8 @@ public class TelaCriarGrupo extends javax.swing.JFrame {
 
         jbConvidarTelaCriarGrupo.setText("Convidar");
 
+        jLabel3.setText("Grupos existentes:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -74,20 +82,25 @@ public class TelaCriarGrupo extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addComponent(listGruposExistentes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jbCriarGrupo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jbCancelarCriacaoGrupo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jbConvidarTelaCriarGrupo))
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(tfTituloGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 124, Short.MAX_VALUE)))))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jbCriarGrupo)
+                                .addGap(18, 18, 18)
+                                .addComponent(jbCancelarCriacaoGrupo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                                .addComponent(jbConvidarTelaCriarGrupo))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel1))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -99,12 +112,16 @@ public class TelaCriarGrupo extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(tfTituloGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(listGruposExistentes, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbCriarGrupo)
                     .addComponent(jbCancelarCriacaoGrupo)
                     .addComponent(jbConvidarTelaCriarGrupo))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -169,9 +186,27 @@ public class TelaCriarGrupo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JButton jbCancelarCriacaoGrupo;
     private javax.swing.JButton jbConvidarTelaCriarGrupo;
     private javax.swing.JButton jbCriarGrupo;
+    private java.awt.List listGruposExistentes;
     private javax.swing.JTextField tfTituloGrupo;
     // End of variables declaration//GEN-END:variables
+
+    public void setListaGrupos(){
+        listGruposExistentes.removeAll();
+        Collection colecao = GrupoDao.getInstance().list();
+        ArrayList<Grupo> grupos = new ArrayList<>();
+        
+        for(Object c : colecao){
+            grupos.add((Grupo) c);
+        }
+        int i;
+        int n = grupos.size();
+        for(i = 0; i < n; i++){
+            listGruposExistentes.add("Titulo: "+grupos.get(i).getTitulo()+" - Aluno Lider: "+grupos.get(i).getAlunoLider().getNome());
+        }
+
+    }
 }
