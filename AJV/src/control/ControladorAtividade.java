@@ -11,6 +11,9 @@ import view.TelaCriarAtividade;
 import dao.AtividadeDao;
 import java.security.SecureRandom;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 /**
  *
@@ -20,9 +23,11 @@ public class ControladorAtividade {
 
     private static ControladorAtividade instance;
     private final TelaCriarAtividade telaCriarAtividade;
+    private Atividade atividade;
 
     private ControladorAtividade() {
         telaCriarAtividade = new TelaCriarAtividade();
+        atividade = new Atividade();
     }
 
     public static synchronized ControladorAtividade getInstance() {
@@ -50,11 +55,11 @@ public class ControladorAtividade {
             AtividadeDao atividadeDao = AtividadeDao.getInstance();
             encontrou = atividadeDao.existeAtividade(randomId, titulo);
 
-            Atividade atividade = new Atividade();
-            atividade.setTitulo(titulo);
-            atividade.setNumeroParticipantesGrupo(participantes);
-            atividade.setAtividadeId(Integer.parseInt(randomId));
-            atividadeDao.put(atividade);
+            Atividade newAtividade = new Atividade();
+            newAtividade.setTitulo(titulo);
+            newAtividade.setNumeroParticipantesGrupo(participantes);
+            newAtividade.setAtividadeId(Integer.parseInt(randomId));
+            atividadeDao.put(newAtividade);
             JOptionPane.showMessageDialog(telaCriarAtividade, "Atividade criada com sucesso");
             telaCriarAtividade.setVisible(Boolean.FALSE);
         }
@@ -62,5 +67,9 @@ public class ControladorAtividade {
 
     public void fechaTelaCriarAtividade() {
         telaCriarAtividade.setVisible(Boolean.FALSE);
+    }
+    
+    public Collection<Atividade> getAtividades(){
+        return AtividadeDao.getInstance().list();
     }
 }

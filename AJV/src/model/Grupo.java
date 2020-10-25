@@ -21,7 +21,7 @@ public class Grupo implements Serializable {
     public Atividade m_Atividade;
 
     public Grupo(){
-
+        this.alunos = new ArrayList<Aluno>();
     }
 
     public int getGrupoId() {

@@ -108,6 +108,11 @@ public class TelaInicial extends javax.swing.JFrame {
         mGerenciarGrupos.setText("Gerenciar Grupo");
 
         miConvidarAluno.setText("Convidar Aluno");
+        miConvidarAluno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miConvidarAlunoActionPerformed(evt);
+            }
+        });
         mGerenciarGrupos.add(miConvidarAluno);
 
         miAceitarPedidos.setText("Aceitar Pedidos");
@@ -184,6 +189,10 @@ public class TelaInicial extends javax.swing.JFrame {
     private void jmiAvaliarGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAvaliarGruposActionPerformed
         ControladorAvaliacao.getInstance().exibeAvaliarGrupo();
     }//GEN-LAST:event_jmiAvaliarGruposActionPerformed
+
+    private void miConvidarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miConvidarAlunoActionPerformed
+        ControladorGrupo.getInstance().convidarGrupos();      // TODO add your handling code here:
+    }//GEN-LAST:event_miConvidarAlunoActionPerformed
 
     /**
      * @param args the command line arguments

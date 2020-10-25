@@ -14,6 +14,8 @@ import java.security.SecureRandom;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Collection;
+import model.Aluno;
+import model.Atividade;
 import view.TelaListarGrupos;
 
 /**
@@ -25,10 +27,12 @@ public class ControladorGrupo {
     private static ControladorGrupo instance;
     private final TelaCriarGrupo telaCriarGrupo;
     private final TelaListarGrupos telaListarGrupos;
+    private int qtdMembrosGrupo;
     
     private ControladorGrupo() {
         telaCriarGrupo = new TelaCriarGrupo();
         telaListarGrupos = new TelaListarGrupos();
+        qtdMembrosGrupo = 0;
     }
     
     public static synchronized ControladorGrupo getInstance() {
@@ -60,9 +64,12 @@ public class ControladorGrupo {
             
             grupo.setTitulo(titulo);
             grupo.setGrupoId(Integer.parseInt(randomId));
-            grupo.setAlunoLider(AlunoDao.getInstance().get(ControladorPrincipal.getInstance().getUsuarioId()));
-
+            Aluno lider = AlunoDao.getInstance().get(ControladorPrincipal.getInstance().getUsuarioId());
+            lider.setEquipeId(grupo.getGrupoId());
+            grupo.setAlunoLider(lider);
+            grupo.setAlunos(grupo.getAlunoLider());
             grupoDao.put(grupo);
+            ControladorAluno.getInstance().setAlunoLider(lider);
             JOptionPane.showMessageDialog(telaCriarGrupo, "Grupo criado com sucesso");
             telaCriarGrupo.setVisible(Boolean.FALSE);
         }
@@ -97,4 +104,28 @@ public class ControladorGrupo {
         return this.collectionToArrayList(GrupoDao.getInstance().list());
     }
     
+    public Atividade getAtividade(){
+        ArrayList<Atividade> atividades = new ArrayList<>();
+        ControladorAtividade.getInstance().getAtividades().forEach(c -> {
+            atividades.add((Atividade) c);
+        });
+        return atividades.get(1);
+    
+    }
+
+    public void convidarGrupos() {
+       this.qtdMembrosGrupo = getAtividade().getNumeroParticipantesGrupo();
+       Grupo grupoDoAluno = new Grupo();
+       for(Grupo grupo : this.retornaGrupos()){
+            if(grupo.getAlunoLider().getId() == ControladorPrincipal.getInstance().getUsuarioId()){
+                grupoDoAluno = grupo;
+            }
+       }
+
+       if(qtdMembrosGrupo == grupoDoAluno.getAlunos().size()) {
+           JOptionPane.showMessageDialog(null, "Grupo Atingiu o limite de Alunos permitido!");
+       } else {
+           ControladorAluno.getInstance().exibeListaAlunos();
+       }
+    }
 }

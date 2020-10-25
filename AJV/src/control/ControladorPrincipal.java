@@ -36,6 +36,9 @@ public class ControladorPrincipal {
         telaInicial.setTitle("Usuario Logado: " + nome);
         telaInicial.setVisible(Boolean.TRUE);
         telaInicial.exibeItensNaTela(tipoDeAcesso);
+        if(tipoDeAcesso.equalsIgnoreCase("aluno")){
+            ControladorAluno.getInstance().logaAluno(id);
+        }
         this.usuarioId = id;
     }
 
