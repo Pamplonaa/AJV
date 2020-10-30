@@ -46,6 +46,10 @@ public class ControladorAtividade {
         SecureRandom prng = SecureRandom.getInstance("SHA1PRNG");
         String randomId = Integer.toString(prng.nextInt());
         String titulo = telaCriarAtividade.tituloAtividade();
+        String descricao = telaCriarAtividade.descricao();
+        String prazo = telaCriarAtividade.prazoEntrega();
+        int num = telaCriarAtividade.numParticipantes();
+
         int participantes = telaCriarAtividade.numParticipantes();
         if (titulo.isEmpty()) {
             JOptionPane.showMessageDialog(telaCriarAtividade, "Informe um título válido");
@@ -57,6 +61,9 @@ public class ControladorAtividade {
 
             Atividade newAtividade = new Atividade();
             newAtividade.setTitulo(titulo);
+            newAtividade.setDescricao(descricao);
+            newAtividade.setPrazoEntrega(prazo);
+            newAtividade.setNumParticipantes(num);
             newAtividade.setNumeroParticipantesGrupo(participantes);
             newAtividade.setAtividadeId(Integer.parseInt(randomId));
             atividadeDao.put(newAtividade);
@@ -68,8 +75,8 @@ public class ControladorAtividade {
     public void fechaTelaCriarAtividade() {
         telaCriarAtividade.setVisible(Boolean.FALSE);
     }
-    
-    public Collection<Atividade> getAtividades(){
+
+    public Collection<Atividade> getAtividades() {
         return AtividadeDao.getInstance().list();
     }
 }
