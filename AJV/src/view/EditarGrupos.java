@@ -16,6 +16,7 @@ public class EditarGrupos extends javax.swing.JFrame {
      */
     public EditarGrupos() {
         initComponents();
+        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
     }
 
     /**

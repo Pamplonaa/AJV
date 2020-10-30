@@ -73,4 +73,14 @@ public class ControladorAluno {
         AlunoDao.getInstance().persist();
     }
     
+    public void alunoSelecionadoConvite(int index){
+        ArrayList<Aluno> alunos = new ArrayList<>();
+        
+        for(Object c : AlunoDao.getInstance().list()){
+            alunos.add((Aluno) c);
+        }
+        Aluno alunoSelecionado = alunos.get(index);
+        ControladorConvite.getInstance().editaConvite(alunoSelecionado);
+    }
+    
 }

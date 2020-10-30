@@ -24,6 +24,7 @@ public class TelaListarGrupos extends javax.swing.JFrame {
     public TelaListarGrupos() {
         initComponents();
         this.setListaGrupos();
+        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
     }
 
     /**

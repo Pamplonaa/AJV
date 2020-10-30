@@ -25,6 +25,7 @@ public class TelaCriarGrupo extends javax.swing.JFrame {
      */
     public TelaCriarGrupo() {
         initComponents();
+        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
     }
 
     /**

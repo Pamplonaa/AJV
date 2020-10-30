@@ -24,6 +24,7 @@ public class ExibirListaAlunos extends javax.swing.JFrame {
     public ExibirListaAlunos() {
         initComponents();
         this.setListaAlunos();
+        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -45,6 +46,17 @@ public class ExibirListaAlunos extends javax.swing.JFrame {
         jLabel1.setText("Alunos:");
 
         jButton1.setText("OK");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
+        listAlunos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listAlunosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -54,8 +66,7 @@ public class ExibirListaAlunos extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(listAlunos, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(listAlunos, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton1)))
@@ -71,8 +82,8 @@ public class ExibirListaAlunos extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(listAlunos, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addComponent(listAlunos, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                .addGap(23, 23, 23)
                 .addComponent(jButton1)
                 .addGap(47, 47, 47))
         );
@@ -92,6 +103,14 @@ public class ExibirListaAlunos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+         ControladorAluno.getInstance().alunoSelecionadoConvite(this.listAlunos.getSelectedIndex());
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void listAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listAlunosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listAlunosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,5 +170,6 @@ public class ExibirListaAlunos extends javax.swing.JFrame {
             listAlunos.add(alunos.get(i).getNome() + " - grupo: " + alunos.get(i).getEquipeId());
         }
     }
+    
 
 }

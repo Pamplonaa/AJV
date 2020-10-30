@@ -21,6 +21,7 @@ public class AvaliarGrupo extends javax.swing.JFrame {
     /** Creates new form AvaliarGrupo */
     public AvaliarGrupo() {
         initComponents();
+        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
     }
 
     /** This method is called from within the constructor to

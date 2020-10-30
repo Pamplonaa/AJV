@@ -5,6 +5,11 @@
  */
 package view;
 
+import control.ControladorConvite;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Pizetta
@@ -16,6 +21,7 @@ public class ConvidarAlunoGrupo extends javax.swing.JFrame {
      */
     public ConvidarAlunoGrupo() {
         initComponents();
+        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -42,10 +48,10 @@ public class ConvidarAlunoGrupo extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        jbEnviar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jtaMensagem = new javax.swing.JTextArea();
+        jtfNomeConvidado = new javax.swing.JTextField();
 
         jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -159,14 +165,20 @@ public class ConvidarAlunoGrupo extends javax.swing.JFrame {
 
         jLabel1.setText("Convidar aluno para o grupo");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "nome1", "nome2", "nome3" }));
+        jbEnviar.setText("Enviar");
+        jbEnviar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbEnviarMouseClicked(evt);
+            }
+        });
 
-        jButton1.setText("OK");
+        jtaMensagem.setColumns(20);
+        jtaMensagem.setRows(5);
+        jtaMensagem.setText("Gostaria de Participar do meu grupo?");
+        jtaMensagem.setToolTipText("");
+        jScrollPane2.setViewportView(jtaMensagem);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setToolTipText("");
-        jScrollPane2.setViewportView(jTextArea1);
+        jtfNomeConvidado.setEditable(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -175,30 +187,28 @@ public class ConvidarAlunoGrupo extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jtfNomeConvidado))
+                            .addComponent(jbEnviar))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(102, 102, 102))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(2, 2, 2)
+                .addComponent(jtfNomeConvidado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jbEnviar)
+                .addGap(45, 45, 45))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -231,6 +241,18 @@ public class ConvidarAlunoGrupo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jbEntrar1ActionPerformed
 
+    private void jbEnviarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbEnviarMouseClicked
+         try {
+            String texto = jtaMensagem.getText();
+            ControladorConvite.getInstance().encaminhaConvite(texto);        // TODO add your handling code here:
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(TelaCriarGrupo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jbEnviarMouseClicked
+
+    public void jtfNomeConvidadoSetText(String text) {
+        jtfNomeConvidado.setText(text);
+    }
     /**
      * @param args the command line arguments
      */
@@ -265,15 +287,15 @@ public class ConvidarAlunoGrupo extends javax.swing.JFrame {
             }
         });
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField PFLogin;
     private javax.swing.JPasswordField PFLogin1;
     private javax.swing.JTextField TFLogin;
     private javax.swing.JTextField TFLogin1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JFrame jFrame2;
     private javax.swing.JLabel jLabel1;
@@ -283,8 +305,10 @@ public class ConvidarAlunoGrupo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton jbEntrar;
     private javax.swing.JButton jbEntrar1;
+    private javax.swing.JButton jbEnviar;
+    private javax.swing.JTextArea jtaMensagem;
+    private javax.swing.JTextField jtfNomeConvidado;
     // End of variables declaration//GEN-END:variables
 }

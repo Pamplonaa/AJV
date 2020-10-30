@@ -15,6 +15,7 @@ public class AgendaDisciplina extends javax.swing.JFrame {
     /** Creates new form AgendaDisciplina */
     public AgendaDisciplina() {
         initComponents();
+        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
     }
 
     /** This method is called from within the constructor to

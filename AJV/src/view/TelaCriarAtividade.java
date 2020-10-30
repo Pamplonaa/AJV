@@ -21,6 +21,7 @@ public class TelaCriarAtividade extends javax.swing.JFrame {
      */
     public TelaCriarAtividade() {
         initComponents();
+        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
     }
 
     /**

@@ -15,6 +15,7 @@ public class SolicitarParticipacaoGrupo extends javax.swing.JFrame {
     /** Creates new form SolicitarParticipacaoGrupo */
     public SolicitarParticipacaoGrupo() {
         initComponents();
+        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
     }
 
     /** This method is called from within the constructor to

@@ -114,18 +114,27 @@ public class ControladorGrupo {
     }
 
     public void convidarGrupos() {
-       this.qtdMembrosGrupo = getAtividade().getNumeroParticipantesGrupo();
-       Grupo grupoDoAluno = new Grupo();
-       for(Grupo grupo : this.retornaGrupos()){
-            if(grupo.getAlunoLider().getId() == ControladorPrincipal.getInstance().getUsuarioId()){
-                grupoDoAluno = grupo;
-            }
-       }
-
-       if(qtdMembrosGrupo == grupoDoAluno.getAlunos().size()) {
-           JOptionPane.showMessageDialog(null, "Grupo Atingiu o limite de Alunos permitido!");
+        Grupo grupoDoAluno = this.getGrupoAluno();
+       
+       if(grupoDoAluno.getGrupoId() == 0){
+           JOptionPane.showMessageDialog(null, "Convites permitidos apenas para líderes de Grupos!");
        } else {
-           ControladorAluno.getInstance().exibeListaAlunos();
+           this.qtdMembrosGrupo = getAtividade().getNumeroParticipantesGrupo();
+           if(qtdMembrosGrupo == grupoDoAluno.getAlunos().size()) {
+               JOptionPane.showMessageDialog(null, "Grupo Atingiu o limite de Alunos permitido!");
+           } else {
+               ControladorAluno.getInstance().exibeListaAlunos();
+           }
        }
+    }
+    
+    public Grupo getGrupoAluno() {
+        
+        for(Grupo grupo : this.retornaGrupos()){
+            if(grupo.getAlunoLider().getId() == ControladorPrincipal.getInstance().getUsuarioId()){
+                return grupo;
+            }
+        }
+       return new Grupo();
     }
 }

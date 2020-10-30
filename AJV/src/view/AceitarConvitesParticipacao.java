@@ -16,6 +16,7 @@ public class AceitarConvitesParticipacao extends javax.swing.JFrame {
      */
     public AceitarConvitesParticipacao() {
         initComponents();
+        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
     }
 
     /**

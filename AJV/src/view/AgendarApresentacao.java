@@ -16,6 +16,7 @@ public class AgendarApresentacao extends javax.swing.JPanel {
      */
     public AgendarApresentacao() {
         initComponents();
+        //this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
     }
 
     /**

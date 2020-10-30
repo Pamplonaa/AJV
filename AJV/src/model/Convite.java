@@ -11,14 +11,49 @@ import java.io.Serializable;
  */
 public class Convite  implements Serializable{
 
+        private static final long serialVersionUID = 1L;
 	private Aluno convidado;
 	private String mensagem;
+        private int equipeId;
+        private int conviteId;
 
 	public Convite(){
 
 	}
 
-	public void finalize() throws Throwable {
+    public int getEquipeId() {
+        return equipeId;
+    }
 
-	}
+    public void setEquipeId(int equipeId) {
+        this.equipeId = equipeId;
+    }
+
+    public Aluno getConvidado() {
+        return convidado;
+    }
+
+    public void setConvidado(Aluno convidado) {
+        this.convidado = convidado;
+    }
+
+    public String getMensagem() {
+        return mensagem;
+    }
+
+    public void setMensagem(String mensagem) {
+        this.mensagem = mensagem;
+    }
+
+    public int getConviteId() {
+        return conviteId;
+    }
+
+    public void setConviteId(int conviteId) {
+        this.conviteId = conviteId;
+    }
+
+    
+    
+
 }//end Convite
