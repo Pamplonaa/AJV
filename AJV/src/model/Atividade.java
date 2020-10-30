@@ -57,7 +57,7 @@ public class Atividade implements Serializable {
     public void setProfessorId(Professor professorId) {
         this.professorId = professorId;
     }
-    
+
     public String getTitulo() {
         return titulo;
     }
@@ -65,24 +65,24 @@ public class Atividade implements Serializable {
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
-    
-     public String setDescricao() {
+
+    public String getDescricao() {
         return descricao;
     }
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-    
-     public String setPrazoEntrega() {
+
+    public String getPrazoEntrega() {
         return prazoEntrega;
     }
 
     public void setPrazoEntrega(String prazo) {
         this.prazoEntrega = prazo;
     }
-    
-     public int getNumParticipantes() {
+
+    public int getNumParticipantes() {
         return numParticipantes;
     }
 

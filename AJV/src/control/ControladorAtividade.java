@@ -8,6 +8,7 @@ package control;
 import javax.swing.JOptionPane;
 import model.Atividade;
 import view.TelaCriarAtividade;
+import view.TelaListarAtividades;
 import dao.AtividadeDao;
 import java.security.SecureRandom;
 import java.security.NoSuchAlgorithmException;
@@ -23,10 +24,12 @@ public class ControladorAtividade {
 
     private static ControladorAtividade instance;
     private final TelaCriarAtividade telaCriarAtividade;
+    private final TelaListarAtividades telaListarAtividades;
     private Atividade atividade;
 
     private ControladorAtividade() {
         telaCriarAtividade = new TelaCriarAtividade();
+        telaListarAtividades = new TelaListarAtividades();
         atividade = new Atividade();
     }
 
@@ -75,8 +78,19 @@ public class ControladorAtividade {
     public void fechaTelaCriarAtividade() {
         telaCriarAtividade.setVisible(Boolean.FALSE);
     }
+    
+    public void exibeTelaListarAtividades(){
+        telaListarAtividades.setListaAtividades();
+        telaListarAtividades.setLocationRelativeTo(null);
+        telaListarAtividades.setVisible(Boolean.TRUE);
+    }
+
+    public void fechaTelaListarAtividades() {
+        telaListarAtividades.setVisible(Boolean.FALSE);
+    }
 
     public Collection<Atividade> getAtividades() {
         return AtividadeDao.getInstance().list();
     }
+
 }

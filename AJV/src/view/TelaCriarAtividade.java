@@ -190,7 +190,7 @@ public class TelaCriarAtividade extends javax.swing.JFrame {
     
     public String prazoEntrega() {
         String prazo = new String();
-        prazo = jtfQuantidadeMembrosGrupo.getText();
+        prazo = jtfPrazoEntrega.getText();
         return prazo;
     }
 
