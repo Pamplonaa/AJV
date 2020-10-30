@@ -8,6 +8,7 @@ package control;
 import javax.swing.JOptionPane;
 import model.Atividade;
 import view.TelaCriarAtividade;
+import view.TelaListarAtividades;
 import dao.AtividadeDao;
 import java.security.SecureRandom;
 import java.security.NoSuchAlgorithmException;
@@ -23,10 +24,12 @@ public class ControladorAtividade {
 
     private static ControladorAtividade instance;
     private final TelaCriarAtividade telaCriarAtividade;
+    private final TelaListarAtividades telaListarAtividades;
     private Atividade atividade;
 
     private ControladorAtividade() {
         telaCriarAtividade = new TelaCriarAtividade();
+        telaListarAtividades = new TelaListarAtividades();
         atividade = new Atividade();
     }
 
@@ -46,6 +49,10 @@ public class ControladorAtividade {
         SecureRandom prng = SecureRandom.getInstance("SHA1PRNG");
         String randomId = Integer.toString(prng.nextInt());
         String titulo = telaCriarAtividade.tituloAtividade();
+        String descricao = telaCriarAtividade.descricao();
+        String prazo = telaCriarAtividade.prazoEntrega();
+        int num = telaCriarAtividade.numParticipantes();
+
         int participantes = telaCriarAtividade.numParticipantes();
         if (titulo.isEmpty()) {
             JOptionPane.showMessageDialog(telaCriarAtividade, "Informe um título válido");
@@ -57,6 +64,9 @@ public class ControladorAtividade {
 
             Atividade newAtividade = new Atividade();
             newAtividade.setTitulo(titulo);
+            newAtividade.setDescricao(descricao);
+            newAtividade.setPrazoEntrega(prazo);
+            newAtividade.setNumParticipantes(num);
             newAtividade.setNumeroParticipantesGrupo(participantes);
             newAtividade.setAtividadeId(Integer.parseInt(randomId));
             atividadeDao.put(newAtividade);
@@ -69,7 +79,18 @@ public class ControladorAtividade {
         telaCriarAtividade.setVisible(Boolean.FALSE);
     }
     
-    public Collection<Atividade> getAtividades(){
+    public void exibeTelaListarAtividades(){
+        telaListarAtividades.setListaAtividades();
+        telaListarAtividades.setLocationRelativeTo(null);
+        telaListarAtividades.setVisible(Boolean.TRUE);
+    }
+
+    public void fechaTelaListarAtividades() {
+        telaListarAtividades.setVisible(Boolean.FALSE);
+    }
+
+    public Collection<Atividade> getAtividades() {
         return AtividadeDao.getInstance().list();
     }
+
 }

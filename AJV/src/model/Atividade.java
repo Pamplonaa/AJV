@@ -7,13 +7,16 @@ import java.io.Serializable;
  * @version 1.0
  * @created 27-set-2020 10:21:43
  */
-public class Atividade  implements Serializable{
+public class Atividade implements Serializable {
 
     private int atividadeId;
     private Avaliacao avaliacao;
     private int numeroParticipantesGrupo;
     public Professor professorId;
     private String titulo;
+    private String descricao;
+    private String prazoEntrega;
+    private int numParticipantes;
 
     public Atividade() {
 
@@ -55,8 +58,36 @@ public class Atividade  implements Serializable{
         this.professorId = professorId;
     }
 
+    public String getTitulo() {
+        return titulo;
+    }
+
     public void setTitulo(String titulo) {
         this.titulo = titulo;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String getPrazoEntrega() {
+        return prazoEntrega;
+    }
+
+    public void setPrazoEntrega(String prazo) {
+        this.prazoEntrega = prazo;
+    }
+
+    public int getNumParticipantes() {
+        return numParticipantes;
+    }
+
+    public void setNumParticipantes(int num) {
+        this.numParticipantes = num;
     }
 
 }//end Atividade
