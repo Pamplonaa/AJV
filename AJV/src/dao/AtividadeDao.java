@@ -100,7 +100,7 @@ public class AtividadeDao {
 
     public String removeById(Integer id) {
         cacheAtividades.remove(id);
-//        persist();
+        persist();
         return "Removido com sucesso";
     }
 }

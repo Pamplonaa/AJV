@@ -101,6 +101,15 @@
             <Property name="text" type="java.lang.String" value="Listar"/>
           </Properties>
           <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jmiListarAtividades">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Listar Atividades"/>
+                <Property name="actionCommand" type="java.lang.String" value="ListarAtividades"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiListarAtividadesActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="miAgenda">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Agenda da Disciplina"/>
@@ -117,15 +126,6 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiListaDeGruposActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JCheckBoxMenuItem" name="jmiListarAtividades">
-              <Properties>
-                <Property name="selected" type="boolean" value="true"/>
-                <Property name="text" type="java.lang.String" value="Listar Atividades"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiListarAtividadesActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
