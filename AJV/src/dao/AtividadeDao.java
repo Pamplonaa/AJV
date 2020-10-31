@@ -13,8 +13,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Collection;
 import java.util.HashMap;
+import javax.swing.JOptionPane;
 import model.Atividade;
-
 
 /**
  *
@@ -27,7 +27,6 @@ public class AtividadeDao {
     private HashMap<Integer, Atividade> cacheAtividades;
 
     public static AtividadeDao getInstance() {
-
         if (instance == null) {
             return instance = new AtividadeDao();
         }
@@ -97,5 +96,11 @@ public class AtividadeDao {
         if (atividade != null) {
             cacheAtividades.remove(atividade.getAtividadeId());
         }
+    }
+
+    public String removeById(Integer id) {
+        cacheAtividades.remove(id);
+//        persist();
+        return "Removido com sucesso";
     }
 }

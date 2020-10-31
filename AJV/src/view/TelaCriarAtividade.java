@@ -66,12 +66,6 @@ public class TelaCriarAtividade extends javax.swing.JFrame {
             }
         });
 
-        jtfTituloAtividade.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfTituloAtividadeActionPerformed(evt);
-            }
-        });
-
         jtaDescricao.setColumns(20);
         jtaDescricao.setRows(5);
         jScrollPane1.setViewportView(jtaDescricao);
@@ -142,10 +136,6 @@ public class TelaCriarAtividade extends javax.swing.JFrame {
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
         ControladorAtividade.getInstance().fechaTelaCriarAtividade();
     }//GEN-LAST:event_btCancelarActionPerformed
-
-    private void tfTituloAtividadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfTituloAtividadeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfTituloAtividadeActionPerformed
 
     /**
      * @param args the command line arguments

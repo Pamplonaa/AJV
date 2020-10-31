@@ -40,11 +40,6 @@ public class ControladorAtividade {
         return instance;
     }
 
-    public void exibeTelaCriarAtividade() {
-        telaCriarAtividade.setLocationRelativeTo(null);
-        telaCriarAtividade.setVisible(Boolean.TRUE);
-    }
-
     public void criarAtividade() throws NoSuchAlgorithmException {
         SecureRandom prng = SecureRandom.getInstance("SHA1PRNG");
         String randomId = Integer.toString(prng.nextInt());
@@ -75,11 +70,29 @@ public class ControladorAtividade {
         }
     }
 
+    public void removerAtividade() throws NoSuchAlgorithmException {
+        Integer idAtividade = telaListarAtividades.idAtividade();
+        if (idAtividade == 0) {
+            JOptionPane.showMessageDialog(telaListarAtividades, "Informe um id válido");
+        } else {
+            AtividadeDao atividadeDao = AtividadeDao.getInstance();
+            String mensagem = atividadeDao.removeById(idAtividade);
+
+            JOptionPane.showMessageDialog(telaCriarAtividade, mensagem);
+            telaCriarAtividade.setVisible(Boolean.FALSE);
+        }
+    }
+
+    public void exibeTelaCriarAtividade() {
+        telaCriarAtividade.setLocationRelativeTo(null);
+        telaCriarAtividade.setVisible(Boolean.TRUE);
+    }
+
     public void fechaTelaCriarAtividade() {
         telaCriarAtividade.setVisible(Boolean.FALSE);
     }
-    
-    public void exibeTelaListarAtividades(){
+
+    public void exibeTelaListarAtividades() {
         telaListarAtividades.setListaAtividades();
         telaListarAtividades.setLocationRelativeTo(null);
         telaListarAtividades.setVisible(Boolean.TRUE);
