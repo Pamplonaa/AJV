@@ -9,6 +9,7 @@ import control.ControladorAtividade;
 import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -139,7 +140,7 @@ public class TelaCriarAtividade extends javax.swing.JFrame {
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
-        ControladorAtividade.getInstance().fechaTelaCriarAtividade(); 
+        ControladorAtividade.getInstance().fechaTelaCriarAtividade();
     }//GEN-LAST:event_btCancelarActionPerformed
 
     private void tfTituloAtividadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfTituloAtividadeActionPerformed
@@ -182,13 +183,13 @@ public class TelaCriarAtividade extends javax.swing.JFrame {
         titulo = jtfTituloAtividade.getText();
         return titulo;
     }
-    
+
     public String descricao() {
         String desc = new String();
         desc = jtaDescricao.getText();
         return desc;
     }
-    
+
     public String prazoEntrega() {
         String prazo = new String();
         prazo = jtfPrazoEntrega.getText();
@@ -198,6 +199,9 @@ public class TelaCriarAtividade extends javax.swing.JFrame {
     public int numParticipantes() {
         String participantes = new String();
         participantes = jtfQuantidadeMembrosGrupo.getText();
+        if (!participantes.matches("[0-9]+")) {
+            JOptionPane.showMessageDialog(null, "Quantidade de membros deve ser um número!");
+        }
         return Integer.parseInt(participantes);
     }
 
