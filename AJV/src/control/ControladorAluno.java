@@ -4,7 +4,7 @@ import dao.AlunoDao;
 import java.util.ArrayList;
 import model.Aluno;
 import view.ExibirListaAlunos;
-
+import javax.swing.JOptionPane;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -80,7 +80,12 @@ public class ControladorAluno {
             alunos.add((Aluno) c);
         }
         Aluno alunoSelecionado = alunos.get(index);
-        ControladorConvite.getInstance().editaConvite(alunoSelecionado);
+        if(ControladorConvite.getInstance().temConvitePendente(alunoSelecionado)){
+            JOptionPane.showMessageDialog(null, "Aluno já foi convidado para o grupo! Aguarde a confirmação!");
+        } else {
+            ControladorConvite.getInstance().editaConvite(alunoSelecionado);
+        }
+        
     }
     
 }

@@ -11,6 +11,9 @@ import model.Convite;
 import java.security.SecureRandom;
 import java.security.NoSuchAlgorithmException;
 import dao.ConviteDao;
+import java.util.ArrayList;
+import java.util.Collection;
+import javax.swing.JOptionPane;
 /**
  *
  * @author zemartins81
@@ -39,6 +42,33 @@ public class ControladorConvite {
         
         telaEditaConvite.jtfNomeConvidadoSetText(alunoConvidado.getNome());
         telaEditaConvite.setVisible(true);
+    }
+    
+    public ArrayList<Convite> collectionToArrayList(Collection colecao){
+        ArrayList<Convite> convites = new ArrayList<>();
+        
+        for(Object c : colecao){
+            convites.add((Convite) c);
+        }
+        
+        return convites;
+    }
+    
+    public ArrayList<Convite> retornaConvites(){
+       return this.collectionToArrayList(ConviteDao.getInstance().list());
+    }
+    
+    public boolean temConvitePendente(Aluno aluno) {
+        this.alunoConvidado = aluno;
+        Integer idDoGrupo = ControladorAluno.getInstance().getAlunoLogado().getEquipeId();
+        System.out.println(idDoGrupo);
+        
+        for(Convite convite : this.retornaConvites()){
+            if(convite.getConvidado().getId() == this.alunoConvidado.getId() && convite.getEquipeId() == idDoGrupo){
+                return true;
+            }
+        }
+       return false;
     }
     
     public void encaminhaConvite(String textoDaMensagem ) throws NoSuchAlgorithmException{
