@@ -44,10 +44,13 @@ public class TelaListarAtividades extends javax.swing.JFrame {
         jlIDRemover = new javax.swing.JLabel();
         jtParaRemover = new javax.swing.JTextField();
         jbParaRemover = new javax.swing.JButton();
+        jlIDEditar = new javax.swing.JLabel();
+        jtParaEditar = new javax.swing.JTextField();
+        jbParaEditar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jlListarAtividades.setText("Atividades:");
+        jlListarAtividades.setText("Lista de Atividades:");
 
         jbOkListarAtividades.setText("Ok");
         jbOkListarAtividades.addActionListener(new java.awt.event.ActionListener() {
@@ -72,6 +75,15 @@ public class TelaListarAtividades extends javax.swing.JFrame {
             }
         });
 
+        jlIDEditar.setText("ID para Editar");
+
+        jbParaEditar.setText("Editar");
+        jbParaEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbParaEditarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -81,24 +93,34 @@ public class TelaListarAtividades extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(listaAtividades, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jlListarAtividades)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jbOkListarAtividades)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jbAtualizarListaAtividades)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(listaAtividades, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jbOkListarAtividades)
+                                        .addGap(227, 227, 227)
+                                        .addComponent(jbAtualizarListaAtividades)))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jtParaRemover)
-                            .addComponent(jlIDRemover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jbParaRemover)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jtParaRemover)
+                                .addComponent(jlIDRemover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jbParaRemover))
+                        .addGap(113, 113, 113)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jbParaEditar)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jlIDEditar, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                                    .addComponent(jtParaEditar))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,12 +130,18 @@ public class TelaListarAtividades extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(listaAtividades, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jlIDRemover)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlIDRemover)
+                    .addComponent(jlIDEditar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtParaRemover, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbParaRemover))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                    .addComponent(jtParaEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbParaRemover)
+                    .addComponent(jbParaEditar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbOkListarAtividades)
                     .addComponent(jbAtualizarListaAtividades))
@@ -138,6 +166,10 @@ public class TelaListarAtividades extends javax.swing.JFrame {
             Logger.getLogger(TelaListarAtividades.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jbParaRemoverActionPerformed
+
+    private void jbParaEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbParaEditarActionPerformed
+        ControladorAtividade.getInstance().exibeTelaEditarAtividade();
+    }//GEN-LAST:event_jbParaEditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,9 +209,12 @@ public class TelaListarAtividades extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbAtualizarListaAtividades;
     private javax.swing.JButton jbOkListarAtividades;
+    private javax.swing.JButton jbParaEditar;
     private javax.swing.JButton jbParaRemover;
+    private javax.swing.JLabel jlIDEditar;
     private javax.swing.JLabel jlIDRemover;
     private javax.swing.JLabel jlListarAtividades;
+    private javax.swing.JTextField jtParaEditar;
     private javax.swing.JTextField jtParaRemover;
     private java.awt.List listaAtividades;
     // End of variables declaration//GEN-END:variables
@@ -205,9 +240,10 @@ public class TelaListarAtividades extends javax.swing.JFrame {
 
     public int idAtividade() {
         String idAtividade = new String();
-        idAtividade = jtParaRemover.getText();
+        idAtividade = jtParaEditar.getText();
+
         if (!idAtividade.matches("[0-9]+")) {
-            JOptionPane.showMessageDialog(null, "ID é um número com 10 dígitos!");
+            JOptionPane.showMessageDialog(null, "ID é um número!");
         }
         return Integer.parseInt(idAtividade);
     }

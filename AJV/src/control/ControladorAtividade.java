@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import model.Atividade;
 import view.TelaCriarAtividade;
 import view.TelaListarAtividades;
+import view.TelaEditarAtividade;
 import dao.AtividadeDao;
 import java.security.SecureRandom;
 import java.security.NoSuchAlgorithmException;
@@ -25,11 +26,13 @@ public class ControladorAtividade {
     private static ControladorAtividade instance;
     private final TelaCriarAtividade telaCriarAtividade;
     private final TelaListarAtividades telaListarAtividades;
+    private final TelaEditarAtividade telaEditarAtividade;
     private Atividade atividade;
 
     private ControladorAtividade() {
         telaCriarAtividade = new TelaCriarAtividade();
         telaListarAtividades = new TelaListarAtividades();
+        telaEditarAtividade = new TelaEditarAtividade();
         atividade = new Atividade();
     }
 
@@ -70,6 +73,36 @@ public class ControladorAtividade {
         }
     }
 
+    public void editarAtividade() throws NoSuchAlgorithmException {
+        SecureRandom prng = SecureRandom.getInstance("SHA1PRNG");
+        String randomId = Integer.toString(prng.nextInt());
+        String titulo = telaEditarAtividade.tituloAtividade();
+        String descricao = telaEditarAtividade.descricao();
+        String prazo = telaEditarAtividade.prazoEntrega();
+        int num = telaEditarAtividade.numParticipantes();
+
+        int participantes = telaEditarAtividade.numParticipantes();
+        if (titulo.isEmpty()) {
+            JOptionPane.showMessageDialog(telaEditarAtividade, "Informe um título válido");
+        } else {
+            Boolean encontrou = false;
+
+            AtividadeDao atividadeDao = AtividadeDao.getInstance();
+            encontrou = atividadeDao.existeAtividade(randomId, titulo);
+
+            Atividade newAtividade = new Atividade();
+            newAtividade.setTitulo(titulo);
+            newAtividade.setDescricao(descricao);
+            newAtividade.setPrazoEntrega(prazo);
+            newAtividade.setNumParticipantes(num);
+            newAtividade.setNumeroParticipantesGrupo(participantes);
+            newAtividade.setAtividadeId(Integer.parseInt(randomId));
+            atividadeDao.put(newAtividade);
+            JOptionPane.showMessageDialog(telaEditarAtividade, "Atividade atualizada com sucesso");
+            telaEditarAtividade.setVisible(Boolean.FALSE);
+        }
+    }
+
     public void removerAtividade() throws NoSuchAlgorithmException {
         Integer idAtividade = telaListarAtividades.idAtividade();
         if (idAtividade == 0) {
@@ -104,6 +137,26 @@ public class ControladorAtividade {
 
     public Collection<Atividade> getAtividades() {
         return AtividadeDao.getInstance().list();
+    }
+
+    public void exibeTelaEditarAtividade() {
+        Integer idAtividade = telaListarAtividades.idAtividade();
+
+        Atividade newAtividade;
+
+        AtividadeDao atividadeDao = AtividadeDao.getInstance();
+        newAtividade = atividadeDao.get(idAtividade);
+
+        boolean populou = telaEditarAtividade.popularAtividade(newAtividade);
+
+        if (populou == true) {
+            telaEditarAtividade.setLocationRelativeTo(null);
+            telaEditarAtividade.setVisible(Boolean.TRUE);
+        }
+    }
+
+    public void fechaTelaEditarAtividade() {
+        telaEditarAtividade.setVisible(Boolean.FALSE);
     }
 
 }
