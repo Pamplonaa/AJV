@@ -113,17 +113,17 @@ public class ControladorGrupo {
     
     }
 
-    public void convidarGrupos() {
+    public void convidarAluno() {
         Grupo grupoDoAluno = this.getGrupoAluno();
        
        if(grupoDoAluno.getGrupoId() == 0){
            JOptionPane.showMessageDialog(null, "Convites permitidos apenas para líderes de Grupos!");
        } else {
            this.qtdMembrosGrupo = getAtividade().getNumeroParticipantesGrupo();
-           if(qtdMembrosGrupo == grupoDoAluno.getAlunos().size()) {
-               JOptionPane.showMessageDialog(null, "Grupo Atingiu o limite de Alunos permitido!");
-           } else {
+           if(qtdMembrosGrupo > grupoDoAluno.getAlunos().size()) {
                ControladorAluno.getInstance().exibeListaAlunos();
+           } else {
+               JOptionPane.showMessageDialog(null, "Grupo Atingiu o limite de Alunos permitido!");
            }
        }
     }

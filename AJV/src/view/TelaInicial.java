@@ -8,6 +8,7 @@ package view;
 import control.ControladorAtividade;
 import control.ControladorAvaliacao;
 import control.ControladorGrupo;
+import control.ControladorAluno;
 
 /**
  *
@@ -144,6 +145,11 @@ public class TelaInicial extends javax.swing.JFrame {
         mListar.add(miAgenda);
 
         milistarAlunos.setText("Alunos");
+        milistarAlunos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                milistarAlunosActionPerformed(evt);
+            }
+        });
         mListar.add(milistarAlunos);
 
         jmiListaDeGrupos.setText("Grupos");
@@ -201,12 +207,16 @@ public class TelaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiAvaliarGruposActionPerformed
 
     private void miConvidarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miConvidarAlunoActionPerformed
-        ControladorGrupo.getInstance().convidarGrupos();      // TODO add your handling code here:
+        ControladorGrupo.getInstance().convidarAluno();      // TODO add your handling code here:
     }//GEN-LAST:event_miConvidarAlunoActionPerformed
 
     private void jmiListarAtividadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiListarAtividadesActionPerformed
         ControladorAtividade.getInstance().exibeTelaListarAtividades();
     }//GEN-LAST:event_jmiListarAtividadesActionPerformed
+
+    private void milistarAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_milistarAlunosActionPerformed
+        ControladorAluno.getInstance().exibeListaAlunos();
+    }//GEN-LAST:event_milistarAlunosActionPerformed
 
     /**
      * @param args the command line arguments

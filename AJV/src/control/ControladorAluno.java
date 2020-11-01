@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import model.Aluno;
 import view.ExibirListaAlunos;
 import javax.swing.JOptionPane;
+import java.util.ArrayList;
+import java.util.Collection;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -19,6 +21,7 @@ public class ControladorAluno {
     
     private static ControladorAluno instance;
     private Aluno alunoLogado;
+    private Aluno alunoSelecionado;
     private ArrayList<Aluno> alunos;
     private ExibirListaAlunos exibirListaAlunos;
 
@@ -44,10 +47,6 @@ public class ControladorAluno {
         this.alunoLogado = alunoLogado;
     }
 
-    public ArrayList<Aluno> getAlunos() {
-        return alunos;
-    }
-
     public void setAlunos(ArrayList<Aluno> alunos) {
         this.alunos = alunos;
     }
@@ -58,13 +57,24 @@ public class ControladorAluno {
     }
 
     public void exibeListaAlunos(){
-        exibirListaAlunos.setListaAlunos();
+        exibirListaAlunos.setListaAlunos(getAlunos());
         exibirListaAlunos.setLocationRelativeTo(null);
         exibirListaAlunos.setVisible(Boolean.TRUE);
     }
     
+    public ArrayList<Aluno> getAlunos() {
+        Collection colecao = AlunoDao.getInstance().list();
+        ArrayList<Aluno> alunos = new ArrayList<>();
+
+        colecao.forEach(c -> {
+            alunos.add((Aluno) c);
+        });
+        this.alunos = alunos;
+        return alunos;
+    }
+
     public void fechaTelaListarGrupos() {
-       exibirListaAlunos.setVisible(Boolean.FALSE);
+        exibirListaAlunos.setVisible(Boolean.FALSE);
     }
 
     public void setAlunoLider(Aluno aluno) {
@@ -75,17 +85,22 @@ public class ControladorAluno {
     
     public void alunoSelecionadoConvite(int index){
         ArrayList<Aluno> alunos = new ArrayList<>();
-        
-        for(Object c : AlunoDao.getInstance().list()){
+
+        for (Object c : AlunoDao.getInstance().list()) {
             alunos.add((Aluno) c);
         }
-        Aluno alunoSelecionado = alunos.get(index);
-        if(ControladorConvite.getInstance().temConvitePendente(alunoSelecionado)){
+        this.alunoSelecionado = alunos.get(index);
+        if (ControladorConvite.getInstance().temConvitePendente(alunoSelecionado)) {
             JOptionPane.showMessageDialog(null, "Aluno já foi convidado para o grupo! Aguarde a confirmação!");
         } else {
-            ControladorConvite.getInstance().editaConvite(alunoSelecionado);
+            if (this.alunoSelecionado.getEquipeId() == 0) {
+                ControladorConvite.getInstance().editaConvite(alunoSelecionado);
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "Aluno já está em um grupo!");
+            }
         }
-        
+
     }
     
 }

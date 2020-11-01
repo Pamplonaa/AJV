@@ -23,7 +23,6 @@ public class ExibirListaAlunos extends javax.swing.JFrame {
      */
     public ExibirListaAlunos() {
         initComponents();
-        this.setListaAlunos();
         this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
     }
 
@@ -156,14 +155,8 @@ public class ExibirListaAlunos extends javax.swing.JFrame {
     private java.awt.List listAlunos;
     // End of variables declaration//GEN-END:variables
 
-    public void setListaAlunos() {
+    public void setListaAlunos(ArrayList<Aluno> alunos) {
         listAlunos.removeAll();
-        Collection colecao = AlunoDao.getInstance().list();
-        ArrayList<Aluno> alunos = new ArrayList<>();
-        
-        colecao.forEach(c -> {
-            alunos.add((Aluno) c);
-        });
         int i;
         int n = alunos.size();
         for(i = 0; i < n; i++){
