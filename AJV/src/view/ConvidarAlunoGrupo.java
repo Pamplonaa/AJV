@@ -244,7 +244,8 @@ public class ConvidarAlunoGrupo extends javax.swing.JFrame {
     private void jbEnviarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbEnviarMouseClicked
          try {
             String texto = jtaMensagem.getText();
-            ControladorConvite.getInstance().encaminhaConvite(texto);        // TODO add your handling code here:
+            ControladorConvite.getInstance().encaminhaConvite(texto);
+            this.setVisible(false);
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(TelaCriarGrupo.class.getName()).log(Level.SEVERE, null, ex);
         }
