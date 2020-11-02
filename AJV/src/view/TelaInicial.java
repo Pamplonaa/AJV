@@ -38,6 +38,7 @@ public class TelaInicial extends javax.swing.JFrame {
         miCriarAtividade = new javax.swing.JMenuItem();
         miEditarGrupos = new javax.swing.JMenuItem();
         jmiAvaliarGrupos = new javax.swing.JMenuItem();
+        jmiExcluirAval = new javax.swing.JMenuItem();
         mAluno = new javax.swing.JMenu();
         miCriarGrupo = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -82,6 +83,14 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
         mProfessor.add(jmiAvaliarGrupos);
+
+        jmiExcluirAval.setText("Excluir Avaliação");
+        jmiExcluirAval.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiExcluirAvalActionPerformed(evt);
+            }
+        });
+        mProfessor.add(jmiExcluirAval);
 
         jMenuBar1.add(mProfessor);
 
@@ -234,6 +243,13 @@ public class TelaInicial extends javax.swing.JFrame {
         telaGruposAvaliados.setVisible(Boolean.TRUE);
     }//GEN-LAST:event_jmiGruposAvaliadosActionPerformed
 
+    private void jmiExcluirAvalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiExcluirAvalActionPerformed
+        TelaExcluirAvaliacao telaExcluirAvaliacao = new TelaExcluirAvaliacao();
+        telaExcluirAvaliacao.setLocationRelativeTo(null);
+        telaExcluirAvaliacao.setListaGrupos();
+        telaExcluirAvaliacao.setVisible(Boolean.TRUE);
+    }//GEN-LAST:event_jmiExcluirAvalActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -283,6 +299,7 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jmiAvaliarGrupos;
+    private javax.swing.JMenuItem jmiExcluirAval;
     private javax.swing.JMenuItem jmiGruposAvaliados;
     private javax.swing.JMenuItem jmiListaDeGrupos;
     private javax.swing.JMenuItem jmiListarAtividades;

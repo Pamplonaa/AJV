@@ -21,7 +21,7 @@ import model.Avaliacao;
  */
 public class AvaliacaoDao {
     private static AvaliacaoDao instance;
-    private String filename = "avaliacao.cla";
+    private String filename = "avaliacoes.cla";
     private HashMap<Integer, Avaliacao> cacheAvaliacao;
     
     public static AvaliacaoDao getInstance() {
@@ -92,9 +92,13 @@ public class AvaliacaoDao {
         }
     }
     
-    public void remove(Avaliacao avaliacao){
+    public boolean remove(Avaliacao avaliacao){
         if(avaliacao != null){
             cacheAvaliacao.remove(avaliacao.getAvaliacaoId());
+            persist();
+            return true;
+        } else{
+            return false;
         }
     }
 }

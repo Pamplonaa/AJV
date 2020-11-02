@@ -23,6 +23,7 @@ public class ControladorAvaliacao {
     
     private static ControladorAvaliacao instance;
     private final AvaliarGrupo avaliarGrupo;
+    private Avaliacao avaliacaoSelecionada;
     
     public ControladorAvaliacao(){
         avaliarGrupo = new AvaliarGrupo();
@@ -54,30 +55,25 @@ public class ControladorAvaliacao {
         
         GrupoDao grupoDao = GrupoDao.getInstance();
         
-        if(grupoId == null || grupoDao.get(grupoId) == null) {
-            JOptionPane.showMessageDialog(avaliarGrupo, "Informe um ID de grupo válido");
-        } else {
-            if(this.verificaSeGrupoFoiAvaliado(grupoId) == true) {
-                JOptionPane.showMessageDialog(avaliarGrupo, "Grupo selecionado já foi avaliado");
-                avaliarGrupo.setVisible(Boolean.FALSE);
-            } else{
-            
-                AvaliacaoDao avaliacaoDao = AvaliacaoDao.getInstance();
+        if(this.verificaSeGrupoFoiAvaliado(grupoId) == true) {
+            JOptionPane.showMessageDialog(avaliarGrupo, "Grupo selecionado já foi avaliado");
+            avaliarGrupo.setVisible(Boolean.FALSE);
+        } else{
 
-                Avaliacao avaliacao = new Avaliacao();
-                avaliacao.setAvaliacaoId(Integer.parseInt(randomId));
-                avaliacao.setComentario(comentario);
-                avaliacao.setNota(nota);
-                avaliacao.setIdGrupo(grupoId);
+            AvaliacaoDao avaliacaoDao = AvaliacaoDao.getInstance();
 
-                avaliacaoDao.put(avaliacao);
-                JOptionPane.showMessageDialog(avaliarGrupo, "Grupo avaliado com sucesso");
-                avaliarGrupo.setVisible(Boolean.FALSE);
-            }
-        }
-        
-        
+            Avaliacao avaliacao = new Avaliacao();
+            avaliacao.setAvaliacaoId(Integer.parseInt(randomId));
+            avaliacao.setComentario(comentario);
+            avaliacao.setNota(nota);
+            avaliacao.setIdGrupo(grupoId);
+
+            avaliacaoDao.put(avaliacao);
+            JOptionPane.showMessageDialog(avaliarGrupo, "Grupo avaliado com sucesso");
+            avaliarGrupo.setVisible(Boolean.FALSE);
+        }    
     }
+    
     
     public boolean verificaSeGrupoFoiAvaliado(int grupoId){
         Collection colecao = AvaliacaoDao.getInstance().list();
@@ -94,5 +90,23 @@ public class ControladorAvaliacao {
             }
         }
         return false;
+    }
+    
+    public Avaliacao avaliacaoSelecionada(int index) {
+         ArrayList<Avaliacao> avaliacoes = new ArrayList<>();
+        
+        for (Object c : AvaliacaoDao.getInstance().list()) {
+            avaliacoes.add((Avaliacao) c);
+        }
+        this.avaliacaoSelecionada = avaliacoes.get(index);
+        return this.avaliacaoSelecionada;
+    }
+    
+    public boolean excluirAvaliacao(Avaliacao avaliacao){
+        if(AvaliacaoDao.getInstance().remove(avaliacao) == true) {
+            return true;
+        } else{
+            return false;
+        }
     }
 }

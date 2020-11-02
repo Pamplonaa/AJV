@@ -27,6 +27,7 @@ public class ControladorGrupo {
     private static ControladorGrupo instance;
     private final TelaCriarGrupo telaCriarGrupo;
     private final TelaListarGrupos telaListarGrupos;
+    private Grupo grupoSelecionado;
     private int qtdMembrosGrupo;
     
     private ControladorGrupo() {
@@ -136,5 +137,15 @@ public class ControladorGrupo {
             }
         }
        return new Grupo();
+    }
+    
+    public Grupo grupoSelecionado(int index) {
+        ArrayList<Grupo> grupos = new ArrayList<>();
+        
+        for (Object c : GrupoDao.getInstance().list()) {
+            grupos.add((Grupo) c);
+        }
+        this.grupoSelecionado = grupos.get(index);
+        return this.grupoSelecionado;
     }
 }

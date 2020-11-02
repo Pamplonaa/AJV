@@ -7,6 +7,7 @@
 package view;
 
 import control.ControladorAvaliacao;
+import control.ControladorGrupo;
 import dao.GrupoDao;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -46,8 +47,6 @@ public class AvaliarGrupo extends javax.swing.JFrame {
         jbCancelarAvaliacao = new javax.swing.JButton();
         listGrupos = new java.awt.List();
         jLabel3 = new javax.swing.JLabel();
-        jlIdGrupo = new javax.swing.JLabel();
-        jtfIdGrupo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -62,7 +61,7 @@ public class AvaliarGrupo extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 430, 190));
 
         jLabel2.setText("Nota:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 440, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, -1, -1));
 
         jtNotaAvaliacao.setToolTipText("");
         jtNotaAvaliacao.addActionListener(new java.awt.event.ActionListener() {
@@ -70,7 +69,7 @@ public class AvaliarGrupo extends javax.swing.JFrame {
                 jtNotaAvaliacaoActionPerformed(evt);
             }
         });
-        getContentPane().add(jtNotaAvaliacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 440, 50, -1));
+        getContentPane().add(jtNotaAvaliacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, 50, -1));
 
         jbOkAvaliacao.setText("Ok");
         jbOkAvaliacao.addActionListener(new java.awt.event.ActionListener() {
@@ -89,18 +88,8 @@ public class AvaliarGrupo extends javax.swing.JFrame {
         getContentPane().add(jbCancelarAvaliacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, -1, -1));
         getContentPane().add(listGrupos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 430, 160));
 
-        jLabel3.setText("Descrição da Avaliação:");
+        jLabel3.setText("Comentários da Avaliação:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
-
-        jlIdGrupo.setText("ID Grupo escolhido:");
-        getContentPane().add(jlIdGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, -1, -1));
-
-        jtfIdGrupo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfIdGrupoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jtfIdGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 440, 110, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -120,10 +109,6 @@ public class AvaliarGrupo extends javax.swing.JFrame {
     private void jbCancelarAvaliacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarAvaliacaoActionPerformed
         ControladorAvaliacao.getInstance().fechaTelaAvaliarGrupo();
     }//GEN-LAST:event_jbCancelarAvaliacaoActionPerformed
-
-    private void jtfIdGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfIdGrupoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfIdGrupoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,13 +150,7 @@ public class AvaliarGrupo extends javax.swing.JFrame {
         return avaliacao;
     }
     public int idGrupo(){
-        String id = new String();
-        id = jtfIdGrupo.getText();
-        
-        if (!id.matches("[0-9]+")) {
-            JOptionPane.showMessageDialog(null, "ID é um número!");
-        }
-        return Integer.parseInt(id);
+        return ControladorGrupo.getInstance().grupoSelecionado(this.listGrupos.getSelectedIndex()).getGrupoId();
     }
     
     public double nota(){
@@ -196,10 +175,8 @@ public class AvaliarGrupo extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbCancelarAvaliacao;
     private javax.swing.JButton jbOkAvaliacao;
-    private javax.swing.JLabel jlIdGrupo;
     private javax.swing.JTextArea jtComentarioAv;
     private javax.swing.JTextField jtNotaAvaliacao;
-    private javax.swing.JTextField jtfIdGrupo;
     private java.awt.List listGrupos;
     // End of variables declaration//GEN-END:variables
 
