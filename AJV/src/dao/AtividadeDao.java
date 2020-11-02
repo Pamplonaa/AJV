@@ -44,6 +44,14 @@ public class AtividadeDao {
         persist();
     }
 
+    public void update(Atividade atividade) {
+        cacheAtividades.get(atividade.getAtividadeId()).setTitulo(atividade.getTitulo());
+        cacheAtividades.get(atividade.getAtividadeId()).setDescricao(atividade.getDescricao());
+        cacheAtividades.get(atividade.getAtividadeId()).setPrazoEntrega(atividade.getPrazoEntrega());
+        cacheAtividades.get(atividade.getAtividadeId()).setNumeroParticipantesGrupo(atividade.getNumeroParticipantesGrupo());
+        persist();
+    }
+
     public void persist() {
         try {
             FileOutputStream fout = new FileOutputStream(filename);

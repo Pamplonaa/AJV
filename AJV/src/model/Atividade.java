@@ -82,12 +82,4 @@ public class Atividade implements Serializable {
         this.prazoEntrega = prazo;
     }
 
-    public int getNumParticipantes() {
-        return numParticipantes;
-    }
-
-    public void setNumParticipantes(int num) {
-        this.numParticipantes = num;
-    }
-
 }//end Atividade

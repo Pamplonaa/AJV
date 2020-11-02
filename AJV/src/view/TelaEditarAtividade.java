@@ -222,7 +222,7 @@ public class TelaEditarAtividade extends javax.swing.JFrame {
             jtfTituloAtividade.setText(atividade.getTitulo());
             jtaDescricao.setText(atividade.getDescricao());
             jtfPrazoEntrega.setText(atividade.getPrazoEntrega());
-            String qtdMebros = Integer.toString(atividade.getNumParticipantes());
+            String qtdMebros = Integer.toString(atividade.getNumeroParticipantesGrupo());
             jtfQuantidadeMembrosGrupo.setText(qtdMebros);
             return true;
         }

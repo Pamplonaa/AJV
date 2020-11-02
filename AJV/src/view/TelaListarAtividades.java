@@ -233,7 +233,7 @@ public class TelaListarAtividades extends javax.swing.JFrame {
                     + " - Titulo: " + atividades.get(i).getTitulo()
                     + " - Descricao: " + atividades.get(i).getDescricao()
                     + " - Prazo de Entrega: " + atividades.get(i).getPrazoEntrega()
-                    + " - Numero de Participantes: " + atividades.get(i).getNumParticipantes()
+                    + " - Numero de Participantes: " + atividades.get(i).getNumeroParticipantesGrupo()
             );
         }
     }
