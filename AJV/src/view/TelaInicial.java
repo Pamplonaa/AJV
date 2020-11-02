@@ -51,6 +51,7 @@ public class TelaInicial extends javax.swing.JFrame {
         miAgenda = new javax.swing.JMenuItem();
         milistarAlunos = new javax.swing.JMenuItem();
         jmiListaDeGrupos = new javax.swing.JMenuItem();
+        jmiGruposAvaliados = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -160,6 +161,14 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         mListar.add(jmiListaDeGrupos);
 
+        jmiGruposAvaliados.setText("Grupos Avaliados");
+        jmiGruposAvaliados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiGruposAvaliadosActionPerformed(evt);
+            }
+        });
+        mListar.add(jmiGruposAvaliados);
+
         jMenuBar1.add(mListar);
 
         setJMenuBar(jMenuBar1);
@@ -218,6 +227,13 @@ public class TelaInicial extends javax.swing.JFrame {
         ControladorAluno.getInstance().exibeListaAlunos();
     }//GEN-LAST:event_milistarAlunosActionPerformed
 
+    private void jmiGruposAvaliadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiGruposAvaliadosActionPerformed
+        TelaGruposAvaliados telaGruposAvaliados = new TelaGruposAvaliados();
+        telaGruposAvaliados.setLocationRelativeTo(null);
+        telaGruposAvaliados.setListaGrupos();
+        telaGruposAvaliados.setVisible(Boolean.TRUE);
+    }//GEN-LAST:event_jmiGruposAvaliadosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -267,6 +283,7 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jmiAvaliarGrupos;
+    private javax.swing.JMenuItem jmiGruposAvaliados;
     private javax.swing.JMenuItem jmiListaDeGrupos;
     private javax.swing.JMenuItem jmiListarAtividades;
     private javax.swing.JMenu mAluno;
