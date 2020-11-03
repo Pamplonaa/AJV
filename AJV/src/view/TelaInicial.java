@@ -197,7 +197,7 @@ public class TelaInicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void miEditarGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miEditarGruposActionPerformed
-        // TODO add your handling code here:
+        ControladorGrupo.getInstance().exibeTelaSelecionarGrupoParaEditar();
     }//GEN-LAST:event_miEditarGruposActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed

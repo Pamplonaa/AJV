@@ -22,23 +22,24 @@ import java.util.UUID;
  * @author Augusto Pamplona
  */
 public class GrupoDao {
+
     private static GrupoDao instance;
     private String filename = "grupos.cla";
     private HashMap<Integer, Grupo> cacheGrupos;
-    
+
     public static GrupoDao getInstance() {
-        
-        if(instance == null) {
+
+        if (instance == null) {
             return instance = new GrupoDao();
         }
         return instance;
     }
-    
-     public GrupoDao() {
+
+    public GrupoDao() {
         this.cacheGrupos = new HashMap<>();
         load();
     }
-    
+
     public void put(Grupo grupo) {
         //falta testar se é nulo
         cacheGrupos.put(grupo.getGrupoId(), grupo);
@@ -60,47 +61,52 @@ public class GrupoDao {
             fout = null;
         } catch (FileNotFoundException ex) {
             System.out.println(ex);
-        } catch(IOException ex){
+        } catch (IOException ex) {
             System.out.println(ex);
         }
     }
-    
-    public Boolean existeGrupo(String titulo){
+
+    public Boolean existeGrupo(String titulo) {
         return this.cacheGrupos.containsValue(titulo);
     }
 
     public Grupo get(Integer id) {
         return cacheGrupos.get(id);
-    }    
+    }
 
     public Collection list() {
         return cacheGrupos.values();
     }
 
     public void load() {
-        try{
+        try {
             FileInputStream fin = new FileInputStream(filename);
             ObjectInputStream oi = new ObjectInputStream(fin);
-            
+
             this.cacheGrupos = (HashMap<Integer, Grupo>) oi.readObject();
-            
+
             oi.close();
             fin.close();
             oi = null;
             fin = null;
-            
-        }catch(ClassNotFoundException ex){
+
+        } catch (ClassNotFoundException ex) {
             System.out.println(ex);
-        }catch(FileNotFoundException ex){
+        } catch (FileNotFoundException ex) {
             System.out.println(ex);
-        }catch(IOException ex){
+        } catch (IOException ex) {
             System.out.println(ex);
         }
     }
-    
-    public void remove(Grupo grupo){
-        if(grupo != null){
+
+    public void remove(Grupo grupo) {
+        if (grupo != null) {
             cacheGrupos.remove(grupo.getGrupoId());
         }
+    }
+
+    public void update(Grupo grupo) {
+        cacheGrupos.get(grupo.getGrupoId()).setTitulo(grupo.getTitulo());
+        persist();
     }
 }
