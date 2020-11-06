@@ -28,13 +28,18 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="btSalvar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="35" max="32767" attributes="0"/>
+                      <EmptySpace pref="30" max="32767" attributes="0"/>
                       <Component id="btCancelar" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jlTituloGrupo" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jtfTituloGrupo" min="-2" pref="133" max="-2" attributes="0"/>
+                          <Component id="jlTituloGrupo" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlAlterarTituloGrupo" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="jtfTituloGrupo" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jlExcluirAlunoGrupo" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jComboBoxExcluirAlunoGrupo" alignment="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -48,9 +53,15 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jlTituloGrupo" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jlAlterarTituloGrupo" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
               <Component id="jtfTituloGrupo" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="105" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jlExcluirAlunoGrupo" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="jComboBoxExcluirAlunoGrupo" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="53" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -63,7 +74,8 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jlTituloGrupo">
       <Properties>
-        <Property name="text" type="java.lang.String" value="T&#xed;tulo do Grupo"/>
+        <Property name="text" type="java.lang.String" value="Editar Grupo"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jtfTituloGrupo">
@@ -83,6 +95,26 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btCancelarActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jlAlterarTituloGrupo">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Alterar T&#xed;tulo do Grupo"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jlExcluirAlunoGrupo">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Excluir Aluno do Grupo"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBoxExcluirAlunoGrupo">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
