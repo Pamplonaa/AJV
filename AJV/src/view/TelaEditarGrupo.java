@@ -67,6 +67,12 @@ public class TelaEditarGrupo extends javax.swing.JFrame {
 
         jlExcluirAlunoGrupo.setText("Excluir Aluno do Grupo");
 
+        jComboBoxExcluirAlunoGrupo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxExcluirAlunoGrupoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -124,6 +130,10 @@ public class TelaEditarGrupo extends javax.swing.JFrame {
         ControladorGrupo.getInstance().fechaTelaEditarGrupo();
     }//GEN-LAST:event_btCancelarActionPerformed
 
+    private void jComboBoxExcluirAlunoGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxExcluirAlunoGrupoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxExcluirAlunoGrupoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -165,6 +175,12 @@ public class TelaEditarGrupo extends javax.swing.JFrame {
         return titulo;
     }
 
+    public String excluirAlunoGrupo() {
+        String aluno = new String();
+        aluno = (String) jComboBoxExcluirAlunoGrupo.getSelectedItem();
+        return aluno;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCancelar;
     private javax.swing.JButton btSalvar;
@@ -181,6 +197,7 @@ public class TelaEditarGrupo extends javax.swing.JFrame {
             return false;
         } else {
             jComboBoxExcluirAlunoGrupo.removeAllItems();
+            jComboBoxExcluirAlunoGrupo.addItem(null);
 
             jtfTituloGrupo.setText(grupo.getTitulo());
 

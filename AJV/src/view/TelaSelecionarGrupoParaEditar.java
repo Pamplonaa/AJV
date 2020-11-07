@@ -184,9 +184,21 @@ public class TelaSelecionarGrupoParaEditar extends javax.swing.JFrame {
         String idAtividade = new String();
         idAtividade = tfIdParaEditar.getText();
 
-        if (!idAtividade.matches("[0-9]+")) {
-            JOptionPane.showMessageDialog(null, "ID é um número!");
+        if (idAtividade == null || idAtividade.isEmpty() || !isNumeric(idAtividade)) {
+            JOptionPane.showMessageDialog(null, "ID é um número, ID não pode ser nulo vazio :(");
         }
         return Integer.parseInt(idAtividade);
+    }
+
+    public static boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            double d = Double.parseDouble(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
     }
 }

@@ -11,11 +11,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import model.Grupo;
 
 import java.util.UUID;
+import javax.swing.JOptionPane;
+import model.Aluno;
 
 /**
  *
@@ -105,8 +108,28 @@ public class GrupoDao {
         }
     }
 
-    public void update(Grupo grupo) {
+    public void updateTitulo(Grupo grupo) {
         cacheGrupos.get(grupo.getGrupoId()).setTitulo(grupo.getTitulo());
         persist();
+    }
+
+    public void removeDoGrupo(Grupo grupo, String alunoParaExcluir) {
+        if (alunoParaExcluir == null) {
+            JOptionPane.showMessageDialog(null, "Nenhum aluno foi removido :D");
+            return;
+        }
+        ArrayList alunos = cacheGrupos.get(grupo.getGrupoId()).getAlunos();
+
+        for (int i = 0; i < alunos.size(); i++) {
+            Aluno aluno = new Aluno();
+            aluno = (Aluno) alunos.get(i);
+
+            if (alunoParaExcluir.equals(aluno.getNome())) {
+                alunos.remove(i);
+                JOptionPane.showMessageDialog(null, "O aluno " + aluno.getNome() + " foi removido. :D");
+            }
+        }
+
+//        persist(); 
     }
 }

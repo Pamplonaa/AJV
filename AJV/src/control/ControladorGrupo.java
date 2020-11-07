@@ -87,6 +87,8 @@ public class ControladorGrupo {
 
         String titulo = telaEditarGrupo.tituloAtividade();
 
+        String alunoParaExcluir = telaEditarGrupo.excluirAlunoGrupo();
+
         if (titulo.isEmpty()) {
             JOptionPane.showMessageDialog(telaEditarGrupo, "Informe um título válido");
         } else {
@@ -96,7 +98,8 @@ public class ControladorGrupo {
             newGrupo.setTitulo(titulo);
             newGrupo.setGrupoId(idAtividade);
 
-            grupoDao.update(newGrupo);
+            grupoDao.updateTitulo(newGrupo);
+            grupoDao.removeDoGrupo(newGrupo, alunoParaExcluir);
 
             JOptionPane.showMessageDialog(telaEditarGrupo, "Grupo atualizado com sucesso");
             telaEditarGrupo.setVisible(Boolean.FALSE);
