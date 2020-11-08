@@ -63,10 +63,5 @@ public class Professor  implements Serializable{
     public void setSenha(String senha) {
         this.senha = senha;
     }
-        
-        
 
-	public void finalize() throws Throwable {
-
-	}
 }//end Professor

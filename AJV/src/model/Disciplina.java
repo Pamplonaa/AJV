@@ -53,9 +53,4 @@ public class Disciplina  implements Serializable{
         this.m_Professor = m_Professor;
     }
         
-        
-
-	public void finalize() throws Throwable {
-
-	}
 }//end Disciplina
