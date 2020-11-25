@@ -3,23 +3,21 @@ package model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-
-
 /**
  * @author Pizetta
  * @version 1.0
  * @created 27-set-2020 10:21:47
  */
-public class Disciplina  implements Serializable{
+public class Disciplina implements Serializable {
 
-	private Agenda agenda;
-	private int disciplinaId;
-	private ArrayList<Aluno> alunos;
-	public Professor m_Professor;
+    private Agenda agenda;
+    private int disciplinaId;
+    private ArrayList<Aluno> alunos;
+    public Professor m_Professor;
 
-	public Disciplina(){
-           this.alunos = new ArrayList<>(); 
-	}
+    public Disciplina() {
+        this.alunos = new ArrayList<>();
+    }
 
     public Agenda getAgenda() {
         return agenda;
@@ -52,5 +50,9 @@ public class Disciplina  implements Serializable{
     public void setM_Professor(Professor m_Professor) {
         this.m_Professor = m_Professor;
     }
-        
+
+    public void finalize() throws Throwable {
+
+    }
+
 }//end Disciplina

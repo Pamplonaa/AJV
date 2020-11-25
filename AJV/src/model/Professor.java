@@ -7,19 +7,19 @@ import java.io.Serializable;
  * @version 1.0
  * @created 27-set-2020 10:21:49
  */
-public class Professor  implements Serializable{
+public class Professor implements Serializable {
 
-        private static final long serialVersionUID = 1L;
-	private Agenda agenda;
-	private Disciplina disciplina;
-	private String nome;
-	private int professorId;
-        private String senha;
+    private static final long serialVersionUID = 1L;
+    private Agenda agenda;
+    private Disciplina disciplina;
+    private String nome;
+    private int professorId;
+    private String senha;
 
     /**
      *
      */
-    public Professor(){
+    public Professor() {
         this.agenda = new Agenda();
         this.disciplina = new Disciplina();
     }
@@ -62,6 +62,10 @@ public class Professor  implements Serializable{
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public void finalize() throws Throwable {
+
     }
 
 }//end Professor
