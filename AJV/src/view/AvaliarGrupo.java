@@ -47,6 +47,7 @@ public class AvaliarGrupo extends javax.swing.JFrame {
         jbCancelarAvaliacao = new javax.swing.JButton();
         listGrupos = new java.awt.List();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -60,7 +61,7 @@ public class AvaliarGrupo extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 430, 190));
 
-        jLabel2.setText("Nota:");
+        jLabel2.setText("* Nota:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, -1, -1));
 
         jtNotaAvaliacao.setToolTipText("");
@@ -90,6 +91,10 @@ public class AvaliarGrupo extends javax.swing.JFrame {
 
         jLabel3.setText("Comentários da Avaliação:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 2, 10)); // NOI18N
+        jLabel4.setText("NOTA É UM CAMPO OBRIGATÓRIO");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 440, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -172,6 +177,7 @@ public class AvaliarGrupo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbCancelarAvaliacao;
     private javax.swing.JButton jbOkAvaliacao;
